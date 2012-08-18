@@ -1,0 +1,1 @@
+extern int add_two(int x, int y);

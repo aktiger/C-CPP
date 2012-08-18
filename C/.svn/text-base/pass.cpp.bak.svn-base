@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+
+
+
+int main()
+{
+	char *data = "123456"; 
+	//scanf();
+	int i = strlen(data);
+	
+	printf("%d\n", i);
+	
+	for(int j=0; j<i; j++)
+	{
+		data[i] = data[i]^'7';
+	}
+	
+	printf("%s\n",data);
+	
+	getchar();
+	return 0;	
+}
