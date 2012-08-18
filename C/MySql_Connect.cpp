@@ -1,4 +1,4 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include "stdio.h"
 #include "winsock.h" 
 #include "mysql.h" 
@@ -38,7 +38,7 @@ printf("input over\n");
 con = mysql_init((MYSQL*) 0); 
 
 
-if ( con !=NULL && mysql_real_connect(con,dbip,dbuser,dbpasswd,dbname,3306/*TCP IP¶Ë¿Ú*/,NULL/*Unix Socket Á¬½ÓÀàĞÍ*/,0/*ÔËĞĞ³ÉODBCÊı¾İ¿â±êÖ¾*/) ) 
+if ( con !=NULL && mysql_real_connect(con,dbip,dbuser,dbpasswd,dbname,3306/*TCP IPç«¯å£*/,NULL/*Unix Socket è¿æ¥ç±»å‹*/,0/*è¿è¡ŒæˆODBCæ•°æ®åº“æ ‡å¿—*/) ) 
 { 
 	if (!mysql_select_db(con,dbname)) 
 	{ 
@@ -68,7 +68,7 @@ else
 
 }
 
-	//sprintf(tmp,"update %s set ÉÌÆ·=\'%s\',Âô³ö=%d,³É½»=%d,ÕÇµø=%d,Âò½ø=%d,×ÜÁ¿=%d,ÕÇ·ù=%f,Ê±¼ä=\'%s\' where  %s",tablename,goods,sold,deal,fluctuate,buy,total,delta,time,UpdateCon);
+	//sprintf(tmp,"update %s set å•†å“=\'%s\',å–å‡º=%d,æˆäº¤=%d,æ¶¨è·Œ=%d,ä¹°è¿›=%d,æ€»é‡=%d,æ¶¨å¹…=%f,æ—¶é—´=\'%s\' where  %s",tablename,goods,sold,deal,fluctuate,buy,total,delta,time,UpdateCon);
 	sprintf(tmp,"insert into %s values(%s,%d,%d)",tablename,"null",x,y);
 	//MessageBoxA(NULL,tmp,tmp,MB_OK);
 	//mysql_query(con,tmp);
@@ -95,13 +95,13 @@ else
 		printf("%s executed!!!\n",tmp);
 	}
 	
-	res = mysql_store_result(con);//½«½á¹û±£´æÔÚres½á¹¹ÌåÖĞ
+	res = mysql_store_result(con);//å°†ç»“æœä¿å­˜åœ¨resç»“æ„ä½“ä¸­
 
 	while(row = mysql_fetch_row(res))  
     {  
         /** 
         * MYSQL_ROW STDCALL mysql_fetch_row(MYSQL_RES *result); 
-         * ¼ìË÷ĞĞ 
+         * æ£€ç´¢è¡Œ 
         */  
 
        for(t=0;t<mysql_num_fields(res);t++)  
