@@ -1,4 +1,4 @@
-#include "X:\±à³ÌÁ·Ï°\C-C++\global.h"
+ï»¿#include "X:\ç¼–ç¨‹ç»ƒä¹ \C-C++\global.h"
 
 #if volatile_test==stdon
  int myfun(int n)

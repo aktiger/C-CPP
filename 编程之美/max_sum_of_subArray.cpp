@@ -1,11 +1,11 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <iomanip>
 using namespace std;
 
 
-//int flag = -1;//Îª0±íÊ¾Êý×éarrayµÄµÚi¸öÔªËØ±»¶ªÆú£¬Îª1±íÊ¾Êý×éarrayµÄµÚi¸öÔªËØ±»Ñ¡ÖÐ
+//int flag = -1;//ä¸º0è¡¨ç¤ºæ•°ç»„arrayçš„ç¬¬iä¸ªå…ƒç´ è¢«ä¸¢å¼ƒï¼Œä¸º1è¡¨ç¤ºæ•°ç»„arrayçš„ç¬¬iä¸ªå…ƒç´ è¢«é€‰ä¸­
 //
 //int find_max_sum_of_subArray(int array[],int i, int j)
 //{
@@ -17,14 +17,14 @@ using namespace std;
 //	{
 //		int tmp1 = find_max_sum_of_subArray(array,i+1,j);
 //		int tmp2 = array[i] + find_max_sum_of_subArray(array,i+1,j);
-//		if (tmp1 > tmp2)//tm1>tmp2,ËµÃ÷Êý×éµÄµÚi¸öÔªËØ±»¶ªÆúµôÁË
+//		if (tmp1 > tmp2)//tm1>tmp2,è¯´æ˜Žæ•°ç»„çš„ç¬¬iä¸ªå…ƒç´ è¢«ä¸¢å¼ƒæŽ‰äº†
 //		{
 //			flag = 0;
 //			return tmp1;
 //		}
 //		else
 //		{
-//			if (flag ==0)//Èç¹ûÇ°Ò»´ÎÊý×éµÚi¸øÔªËØ±»¶ªÆú£¬ÄÇÃ´ËµÃ÷ÒÑ¾­²»ÊÇÁ¬ÐøµÄ×ÓÔªËØ£¬ÒªÖØÐÂ¼ÆËã
+//			if (flag ==0)//å¦‚æžœå‰ä¸€æ¬¡æ•°ç»„ç¬¬iç»™å…ƒç´ è¢«ä¸¢å¼ƒï¼Œé‚£ä¹ˆè¯´æ˜Žå·²ç»ä¸æ˜¯è¿žç»­çš„å­å…ƒç´ ï¼Œè¦é‡æ–°è®¡ç®—
 //			{
 //				flag = 1;
 //				return tmp1;
@@ -59,7 +59,7 @@ int liner_find_max_sum_of_subArray(int array[], int len)
 {
 	int max_number = INT_MIN;
 	int first_positive_position = partition(array, len);
-	if (first_positive_position >len-1)//Ã»ÓÐÕýÊý
+	if (first_positive_position >len-1)//æ²¡æœ‰æ­£æ•°
 	{
 		for (int i=0; i<len; i++)
 		{
@@ -70,7 +70,7 @@ int liner_find_max_sum_of_subArray(int array[], int len)
 		}
 		return max_number;
 	}
-	else //ÕýÊý¼¯ºÏ²»Îª¿Õ£¬½«ËùÓÐÕýÊý¶¼¼ÓÆðÀ´¾ÍÐÐÁË
+	else //æ­£æ•°é›†åˆä¸ä¸ºç©ºï¼Œå°†æ‰€æœ‰æ­£æ•°éƒ½åŠ èµ·æ¥å°±è¡Œäº†
 	{
 		
 	}

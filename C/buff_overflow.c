@@ -1,6 +1,6 @@
+ï»¿
 
-
-//#include "X:\±à³ÌÁ·Ï°\C-C++\global.h"
+//#include "X:\ç¼–ç¨‹ç»ƒä¹ \C-C++\global.h"
 
 //#if buffer_overflow==stdon
 //buffer overflow example 
@@ -10,7 +10,7 @@
 
 //typedef void (*PF)(void);
 
-void why_here(void) //Õâ¸öº¯ÊýÃ»ÓÐÈÎºÎµØ·½µ÷ÓÃ¹ý 
+void why_here(void) //è¿™ä¸ªå‡½æ•°æ²¡æœ‰ä»»ä½•åœ°æ–¹è°ƒç”¨è¿‡ 
 {
 printf("why u here !n\n");
 printf("you are traped here\n");

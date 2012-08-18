@@ -1,4 +1,4 @@
-/*
+ï»¿/*
 Sum of Consecutive Prime Numbers
 
 Description
@@ -40,7 +40,7 @@ Sample Output
 #include <stdio.h>
 #include <math.h>
 
-int primenumber[10001];//Êı×é±ØĞë¿ª´óµã²Å¿ÉÒÔAC£¬´æ·Å2-10000µÄËØÊı
+int primenumber[10001];//æ•°ç»„å¿…é¡»å¼€å¤§ç‚¹æ‰å¯ä»¥ACï¼Œå­˜æ”¾2-10000çš„ç´ æ•°
 int index =1;
 void setprimearray()
 {
@@ -60,13 +60,13 @@ void setprimearray()
     }
 
 }
-/*¼ÆËãnumÓĞ¶àÉÙÂú×ãÒªÇóµÄ²ğ·ÖÇé¿ö*/
+/*è®¡ç®—numæœ‰å¤šå°‘æ»¡è¶³è¦æ±‚çš„æ‹†åˆ†æƒ…å†µ*/
 int combinationcount(int num)
 {
 	int sum = 0;
 	int count = 0;
 	int i, j;
-	//¶şÖØ±éÀú¼ÆËã²ğ·Ö´ÎÊı
+	//äºŒé‡éå†è®¡ç®—æ‹†åˆ†æ¬¡æ•°
 	for(i=1; i<=(num/2)+1; i++)
 	{
 		sum = 0;

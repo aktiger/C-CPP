@@ -1,10 +1,10 @@
-/*
+ï»¿/*
 Author:JustinZhang
-Time:2012Äê4ÔÂ24ÈÕ11:29:25
-End: 2012Äê4ÔÂ25ÈÕ16:56:35
+Time:2012å¹´4æœˆ24æ—¥11:29:25
+End: 2012å¹´4æœˆ25æ—¥16:56:35
 Email:uestczhangchao@gmail.com
-Desc:Æ½ÃæÉÏÓĞN¸öµã£¬ÕÒ³öN¸öµãÖĞ¾àÀë×î½üµÄÁ½¸öµã£»Èç¹ûÓÃÇî¾Ù·¨£¬ÄÇÃ´Ëã·¨µÄ¸´ÔÓ¶È½«´ïµ½O(n^2)£»
-±¾Ëã·¨²ÉÓÃ·ÖÖÎ·¨£¬¿ÉÒÔ½«¸´ÔÓ¶È½µµÍµ½O(n*log(n));
+Desc:å¹³é¢ä¸Šæœ‰Nä¸ªç‚¹ï¼Œæ‰¾å‡ºNä¸ªç‚¹ä¸­è·ç¦»æœ€è¿‘çš„ä¸¤ä¸ªç‚¹ï¼›å¦‚æœç”¨ç©·ä¸¾æ³•ï¼Œé‚£ä¹ˆç®—æ³•çš„å¤æ‚åº¦å°†è¾¾åˆ°O(n^2)ï¼›
+æœ¬ç®—æ³•é‡‡ç”¨åˆ†æ²»æ³•ï¼Œå¯ä»¥å°†å¤æ‚åº¦é™ä½åˆ°O(n*log(n));
 */
 
 
@@ -24,7 +24,7 @@ void swap(int &x, int &y)
 	x = y;
 	y = tmp;
 }
-//²åÈëÅÅĞòËã·¨
+//æ’å…¥æ’åºç®—æ³•
 void insert_sort(vector<int>&A, int p, int r)
 {
 	int i,j;
@@ -35,14 +35,14 @@ void insert_sort(vector<int>&A, int p, int r)
 		j = i - 1;
 		while (j>=p && A[j]>key)
 		{
-			A[j+1] = A[j];//½«A[j]ÍùÇ°ÒÆ¶¯
+			A[j+1] = A[j];//å°†A[j]å¾€å‰ç§»åŠ¨
 			j--;
 		}
 		A[j+1] = key;
 	}
 }
 
-//½«ÕûĞÍÈİÆ÷»®·ÖÎªÁ½¸ö²¿·Ö
+//å°†æ•´å‹å®¹å™¨åˆ’åˆ†ä¸ºä¸¤ä¸ªéƒ¨åˆ†
 int partion(vector<int> &A,int p, int r)
 {
 	int count = p - 1;
@@ -60,15 +60,15 @@ int partion(vector<int> &A,int p, int r)
 	return count+1;
 }
 
-//¸ù¾İËã·¨µ¼ÂÛÉÏµÄË¼Ïë£¬È¡µÃÖĞÎ»ÊıµÄÖĞÎ»Êı
+//æ ¹æ®ç®—æ³•å¯¼è®ºä¸Šçš„æ€æƒ³ï¼Œå–å¾—ä¸­ä½æ•°çš„ä¸­ä½æ•°
 int get_median(vector<int>&data, int p, int r)
 {
 	int i=0, j=0;
-	int n = r - p + 1;            //»ñµÃÔ­Ê¼Êı×éÊı¾İ¸öÊı
+	int n = r - p + 1;            //è·å¾—åŸå§‹æ•°ç»„æ•°æ®ä¸ªæ•°
 	int remains = n%5;
 	int int_count = n - remains;
 	int int_group = int_count/5;
-	int group_count = (n+4)/5;   //¼ÆËã³öÎå¸öÔªËØÒ»×éµÄ×éÊı£»
+	int group_count = (n+4)/5;   //è®¡ç®—å‡ºäº”ä¸ªå…ƒç´ ä¸€ç»„çš„ç»„æ•°ï¼›
 
 	//int *group_median = new int[group_count];
 	vector<int> group_median(group_count);
@@ -77,8 +77,8 @@ int get_median(vector<int>&data, int p, int r)
 	{
 		return data[p];
 	}
-	//ÒÔÏÂ´úÂëÇó³öÎå¸öÔªËØÎªÒ»×éµÄÖĞÎ»Êı
-	if (0 == remains) //Èç¹ûÔªËØµÄ¸öÊıÕıºÃ¿ÉÒÔ·ÖÎªÒÔ5¸öÔªËØÎªµ¥Î»µÄÕûÊı×é
+	//ä»¥ä¸‹ä»£ç æ±‚å‡ºäº”ä¸ªå…ƒç´ ä¸ºä¸€ç»„çš„ä¸­ä½æ•°
+	if (0 == remains) //å¦‚æœå…ƒç´ çš„ä¸ªæ•°æ­£å¥½å¯ä»¥åˆ†ä¸ºä»¥5ä¸ªå…ƒç´ ä¸ºå•ä½çš„æ•´æ•°ç»„
 	{
 		for (i=p; i<=r-4; i=i+5)
 		{
@@ -93,7 +93,7 @@ int get_median(vector<int>&data, int p, int r)
 			insert_sort(data, i, i+4);
 			group_median[(i-p)/5] = data[i+2];
 		}
-		//´¦Àí²»¹»5¸öÔªËØµÄ×é£¬¸Ä×é¿ªÊ¼µÄĞòºÅÎªr-remains+1£¬½áÊøĞòºÅÎªr
+		//å¤„ç†ä¸å¤Ÿ5ä¸ªå…ƒç´ çš„ç»„ï¼Œæ”¹ç»„å¼€å§‹çš„åºå·ä¸ºr-remains+1ï¼Œç»“æŸåºå·ä¸ºr
 		insert_sort(data,r-remains+1,r);
 		group_median[group_count-1] = data[r-remains+1+remains/2];
 	}
@@ -108,7 +108,7 @@ int get_median(vector<int>&data, int p, int r)
 	return 0;
 }
 
-/*¾ÍÊÇÒòÎªget_positionº¯ÊıĞ´´íÁË£¬µ¼ÖÂºÜ¾Ã¶¼Ã»ÓĞÄÜ¹»·¢ÏÖ´íÎó£¬Òª×ĞÏ¸°¡~~*/
+/*å°±æ˜¯å› ä¸ºget_positionå‡½æ•°å†™é”™äº†ï¼Œå¯¼è‡´å¾ˆä¹…éƒ½æ²¡æœ‰èƒ½å¤Ÿå‘ç°é”™è¯¯ï¼Œè¦ä»”ç»†å•Š~~*/
 int get_position(vector<int> &A, int p, int r, int key)
 {
 	for (int i=p; i<=r; i++)
@@ -122,10 +122,10 @@ int get_position(vector<int> &A, int p, int r, int key)
 	return -1;
 }
 
-//¸Ãº¯ÊıÊÇÎªÁËÕÒµ½Êı×éAÖĞ£¬µÚseqĞ¡µÄÊı
+//è¯¥å‡½æ•°æ˜¯ä¸ºäº†æ‰¾åˆ°æ•°ç»„Aä¸­ï¼Œç¬¬seqå°çš„æ•°
 int select(vector<int> &A,int p, int r, int seq)
 {
-	//»ñµÃÊı×éAµÄÖĞÎ»ÊıµÄÖĞÎ»Êı£¬½«Æä×÷Îª»®·ÖÊı×éµÄÖ§µã
+	//è·å¾—æ•°ç»„Açš„ä¸­ä½æ•°çš„ä¸­ä½æ•°ï¼Œå°†å…¶ä½œä¸ºåˆ’åˆ†æ•°ç»„çš„æ”¯ç‚¹
 	int pivot_key = get_median(A, p, r);
 	int pos = get_position(A,p,r,pivot_key);
 	swap(A[pos],A[r]);
@@ -177,14 +177,14 @@ public:
 	}
 
 };
-//½«Á½¸öµã½»»»
+//å°†ä¸¤ä¸ªç‚¹äº¤æ¢
 void swap_point(Point &p1, Point &p2)
 {
 	Point tmp = p1;
 	p1 = p2;
 	p2 = tmp;
 }
-//¸ù¾İµãÈİÆ÷µÄ×îºóÒ»¸öµã£¬½«µã¼¯ºÏ»®·ÖÎªÁ½¸ö²¿·Ö
+//æ ¹æ®ç‚¹å®¹å™¨çš„æœ€åä¸€ä¸ªç‚¹ï¼Œå°†ç‚¹é›†åˆåˆ’åˆ†ä¸ºä¸¤ä¸ªéƒ¨åˆ†
 int partion_Point_Set(vector<Point> &p,int l, int r)
 {
 	int count = -1;
@@ -200,7 +200,7 @@ int partion_Point_Set(vector<Point> &p,int l, int r)
 	swap_point(p[count+1],p[r]);
 	return count+1;
 }
-//»ñµÃÁ½µã¼äµÄ¾àÀë
+//è·å¾—ä¸¤ç‚¹é—´çš„è·ç¦»
 double Distance(const Point &p1, const Point &p2)
 {
 	int x = (p1.x - p2.x);
@@ -208,7 +208,7 @@ double Distance(const Point &p1, const Point &p2)
 	double distance = sqrt((double)(x*x+y*y));
 	return distance;
 }
-//ÕÒµ½Á½¸öÊıµÄ×îĞ¡Öµ
+//æ‰¾åˆ°ä¸¤ä¸ªæ•°çš„æœ€å°å€¼
 double min(double x, double y)
 {
 	if (x>y)
@@ -221,7 +221,7 @@ double min(double x, double y)
 	}
 		
 }
-//°´ÕÕµãµÄx×ø±êÀ´¼ìË÷µãÔÚÈİÆ÷ÖĞµÄÎ»ÖÃ
+//æŒ‰ç…§ç‚¹çš„xåæ ‡æ¥æ£€ç´¢ç‚¹åœ¨å®¹å™¨ä¸­çš„ä½ç½®
 int get_point_position_x(const vector<Point> &p, int l, int r, int x_key)
 {
 	for (int i=l; i<=r; i++)
@@ -233,7 +233,7 @@ int get_point_position_x(const vector<Point> &p, int l, int r, int x_key)
 	}
 	return -1;
 }
-//°´ÕÕµãµÄy×ø±êÀ´¼ìË÷µãÔÚÈİÆ÷ÖĞµÄÎ»ÖÃ
+//æŒ‰ç…§ç‚¹çš„yåæ ‡æ¥æ£€ç´¢ç‚¹åœ¨å®¹å™¨ä¸­çš„ä½ç½®
 int get_point_position_y(const vector<Point> &p, int l, int r, int y_key)
 {
 	for (int i=l; i<=r; i++)
@@ -247,7 +247,7 @@ int get_point_position_y(const vector<Point> &p, int l, int r, int y_key)
 }
 
 
-//ÕÒµ½pÖĞy×ø±êµÚorder´óµÄµã
+//æ‰¾åˆ°pä¸­yåæ ‡ç¬¬orderå¤§çš„ç‚¹
 Point select_point(vector<Point> &p,int l, int r, int order)
 {
 	vector<int> point_y; 
@@ -265,7 +265,7 @@ double get_minimum_distance(vector<Point> &p,int l, int r,vector<Point> &result)
 
 	int i=0,j=0;
 
-   if ((r-l+1)==2)//Èç¹ûµãÊıÎªÁ½¸ö
+   if ((r-l+1)==2)//å¦‚æœç‚¹æ•°ä¸ºä¸¤ä¸ª
 	{
 		double ret = Distance(p[l],p[r]);
 
@@ -278,7 +278,7 @@ double get_minimum_distance(vector<Point> &p,int l, int r,vector<Point> &result)
 
 		return ret;
 	}
-	else if ((r-l+1)==3) //Èç¹ûµãÊıÎª3¸ö
+	else if ((r-l+1)==3) //å¦‚æœç‚¹æ•°ä¸º3ä¸ª
 	{
 		double tmp_dis1 = Distance(p[l],p[l+1]);
 		double tmp_dis2 = Distance(p[l],p[l+2]);
@@ -306,9 +306,9 @@ double get_minimum_distance(vector<Point> &p,int l, int r,vector<Point> &result)
 	}
 		return ret;
 	}
-	else //´óÓÚÈı¸öµãµÄÇé¿ö
+	else //å¤§äºä¸‰ä¸ªç‚¹çš„æƒ…å†µ
 	{
-		//Çó³öµã¼¯pµÄx×ø±êºÍy×ø±ê
+		//æ±‚å‡ºç‚¹é›†pçš„xåæ ‡å’Œyåæ ‡
 		vector<int> Pointx;
 		vector<int> Pointy;
 		for (i=l; i<=r; i++)
@@ -316,14 +316,14 @@ double get_minimum_distance(vector<Point> &p,int l, int r,vector<Point> &result)
 			Pointx.push_back(p[i].x);
 			Pointy.push_back(p[i].y);
 		}
-		//ÕÒµ½µãx×ø±êµÄÖĞÎ»Êı
+		//æ‰¾åˆ°ç‚¹xåæ ‡çš„ä¸­ä½æ•°
 		int x_median = select(Pointx,0,Pointx.size()-1,(Pointx.size()+1)/2);
 		int point_median_pos = get_point_position_x(p,l,r,x_median);
 		swap_point(p[point_median_pos],p[r]);
-		//ÀûÓÃÕÒµ½µÄÖĞÎ»Êı¶Ôµã¼¯½øĞĞ»®·Ö
+		//åˆ©ç”¨æ‰¾åˆ°çš„ä¸­ä½æ•°å¯¹ç‚¹é›†è¿›è¡Œåˆ’åˆ†
 		int point_pivot_index = partion_Point_Set(p,l,r);
-		//ÀûÓÃx×ø±ê×÷ÎªÖĞÎ»Êı£¬½«µã¼¯ºÏ»®·ÖºÃºó£¬µİ¹éµÄÇóÖĞÎ»Êı×ó±ßµã¼¯S1ºÍÓÒ±ßµã¼¯ºÏS2¾àÀë×îĞ¡Öµ£»
-		//¿¼ÂÇÈçºÎ½«¾àÀë×îĞ¡µÄÁ½¸öµã±£´æÏÂÀ´
+		//åˆ©ç”¨xåæ ‡ä½œä¸ºä¸­ä½æ•°ï¼Œå°†ç‚¹é›†åˆåˆ’åˆ†å¥½åï¼Œé€’å½’çš„æ±‚ä¸­ä½æ•°å·¦è¾¹ç‚¹é›†S1å’Œå³è¾¹ç‚¹é›†åˆS2è·ç¦»æœ€å°å€¼ï¼›
+		//è€ƒè™‘å¦‚ä½•å°†è·ç¦»æœ€å°çš„ä¸¤ä¸ªç‚¹ä¿å­˜ä¸‹æ¥
 		double min_s1 = get_minimum_distance(p,l,point_pivot_index,result);
 		double min_s2 = get_minimum_distance(p,point_pivot_index+1,r,result);
 		if (min_s1>min_s2)
@@ -336,8 +336,8 @@ double get_minimum_distance(vector<Point> &p,int l, int r,vector<Point> &result)
 			//result[1] = tmp_result2;
 			delta = min_s1;
 		}
-		//ÏÖÔÚÒÑ¾­µİ¹éµÄÇóµ½ÁËS1ºÍS2ÖĞµã¼¯ºÏ×î¶Ì¾àÀë£¬ÏÂÃæ¿ªÊ¼ÇóS1ºÍS2Ö®¼äµãÖ®¼äµÄ¾àÀë
-		//ÕÒ³öµã¼¯ºÏS2ÖĞ£¬y×ø±êÇ°Áù´óµÄµã,Èç¹û|S2|<6£¬ÔòÖ»ĞèÕÒ³ö|S2|¸öµã
+		//ç°åœ¨å·²ç»é€’å½’çš„æ±‚åˆ°äº†S1å’ŒS2ä¸­ç‚¹é›†åˆæœ€çŸ­è·ç¦»ï¼Œä¸‹é¢å¼€å§‹æ±‚S1å’ŒS2ä¹‹é—´ç‚¹ä¹‹é—´çš„è·ç¦»
+		//æ‰¾å‡ºç‚¹é›†åˆS2ä¸­ï¼Œyåæ ‡å‰å…­å¤§çš„ç‚¹,å¦‚æœ|S2|<6ï¼Œåˆ™åªéœ€æ‰¾å‡º|S2|ä¸ªç‚¹
 		int size_s2 = (r-point_pivot_index<6)?r-point_pivot_index:6;
 		vector<Point> S2;
 		Point tmp;

@@ -1,10 +1,10 @@
-/*
-2011Äê5ÔÂ9ÈÕ20:49:43
-×÷Õß£ºÕÅ³¬
-ÓÊÏä:uestczhangchao@gmail.com
-poj:1664 ---- °Ñm¸öÏàÍ¬µÄÆ»¹û£¬·Åµ½n¸öÏàÍ¬µÄÅÌ×ÓÖÐ,ÕâµÀÌâÊÇ´óÒ»µÄÊ±ºò×ö¸öµÄ£¬µ±Ê±»¹ÊÇ¶«¸ç
-¸æËßÎÒÔõÃ´×öµÄ£¬µ±Ê±Ã»ÔõÃ´¸ãÇå³þ£¬ÊÂ¸ô4Äê£¬Ñ§Ï°µ½ÁËÒ»ÖÖµÝ¹éµÄ½â·¨£¬ÕâºÍ×éºÏÊýÑ§ÖÐÕûÊýµÄ
-²ð·ÖÊÇÒ»ÑùµÄ¡£
+ï»¿/*
+2011å¹´5æœˆ9æ—¥20:49:43
+ä½œè€…ï¼šå¼ è¶…
+é‚®ç®±:uestczhangchao@gmail.com
+poj:1664 ---- æŠŠmä¸ªç›¸åŒçš„è‹¹æžœï¼Œæ”¾åˆ°nä¸ªç›¸åŒçš„ç›˜å­ä¸­,è¿™é“é¢˜æ˜¯å¤§ä¸€çš„æ—¶å€™åšä¸ªçš„ï¼Œå½“æ—¶è¿˜æ˜¯ä¸œå“¥
+å‘Šè¯‰æˆ‘æ€Žä¹ˆåšçš„ï¼Œå½“æ—¶æ²¡æ€Žä¹ˆæžæ¸…æ¥šï¼Œäº‹éš”4å¹´ï¼Œå­¦ä¹ åˆ°äº†ä¸€ç§é€’å½’çš„è§£æ³•ï¼Œè¿™å’Œç»„åˆæ•°å­¦ä¸­æ•´æ•°çš„
+æ‹†åˆ†æ˜¯ä¸€æ ·çš„ã€‚
 */
 
 #include<stdio.h>
@@ -13,17 +13,17 @@ int putapple(int m, int n)
 {
 	if(m==1 || n==1)
 		return 1;
-	//Èç¹ûÆ»¹û±ÈÅÌ×ÓÉÙ£¬ÄÇÃ´²»¿ÉÄÜÃ¿¸öÅÌ×Ó¶¼·ÅÆ»¹û£¬²¢ÇÒÃ¿¸ö
-	//Ã¿¸öÅÌ×Ó¶¼ÊÇÒ»ÑùµÄ£¬ËùÒÔ·µ»Øputapple(m,m);
+	//å¦‚æžœè‹¹æžœæ¯”ç›˜å­å°‘ï¼Œé‚£ä¹ˆä¸å¯èƒ½æ¯ä¸ªç›˜å­éƒ½æ”¾è‹¹æžœï¼Œå¹¶ä¸”æ¯ä¸ª
+	//æ¯ä¸ªç›˜å­éƒ½æ˜¯ä¸€æ ·çš„ï¼Œæ‰€ä»¥è¿”å›žputapple(m,m);
 	if(m<n)
 		return putapple(m,m);
-	//ÅÌ×Ó¸öÊýºÍÆ»¹û¸öÊýÏàµÈ£¬ÄÇÃ´ÓÐÁ½ÖÖÇé¿ö£¬1¡·ËùÓÐµÄÅÌ×Ó¶¼·ÅÒ»¸öÆ»¹û£¬ÓÐÒ»ÖÖ·Å·¨
-	//2¡·ÈÃÒ»¸öÅÌ×Ó¿Õ×Å£¬²»·ÁÆ»¹û£¬¼´Îªputapple(m,m-1);
+	//ç›˜å­ä¸ªæ•°å’Œè‹¹æžœä¸ªæ•°ç›¸ç­‰ï¼Œé‚£ä¹ˆæœ‰ä¸¤ç§æƒ…å†µï¼Œ1ã€‹æ‰€æœ‰çš„ç›˜å­éƒ½æ”¾ä¸€ä¸ªè‹¹æžœï¼Œæœ‰ä¸€ç§æ”¾æ³•
+	//2ã€‹è®©ä¸€ä¸ªç›˜å­ç©ºç€ï¼Œä¸å¦¨è‹¹æžœï¼Œå³ä¸ºputapple(m,m-1);
 	if(m==n)
 		return putapple(m,m-1)+1;
-	//µ±Æ»¹ûµÄ¸öÊý´óÓÚÅÌ×ÓµÄ¸öÊýÊ±£¬ÓÐÁ½ÖÖÇé¿ö:1>ËùÓÐµÄÅÌ×Ó¶¼ÖÁÉÙ·ÅÒ»¸öÆ»¹û£¬ÕâÖÖÇé¿ö
-	//Ö»ÐèÒªÏÈ´Óm¸öÆ»¹ûÖÐÄÃ³ön¸ö£¬·Åµ½n¸öÅÌ×ÓÖÐ£¬Ã¿¸öÅÌ×Ó·ÅÒ»¸öÆ»¹û,·Å·¨ÊýÎ»putapple(m-n,n)
-	//2>ÖÁÉÙÓÐÒ»¸öÅÌ×ÓÊÇ¿Õ×ÅµÄ£¬È»ºó°Ñm¸öÆ»¹û·Åµ½Ê£ÏÂµÄn-1¸öÅÌ×ÓÖÐ£¬·Å·¨ÊýÎ»putapple(m,n-1)
+	//å½“è‹¹æžœçš„ä¸ªæ•°å¤§äºŽç›˜å­çš„ä¸ªæ•°æ—¶ï¼Œæœ‰ä¸¤ç§æƒ…å†µ:1>æ‰€æœ‰çš„ç›˜å­éƒ½è‡³å°‘æ”¾ä¸€ä¸ªè‹¹æžœï¼Œè¿™ç§æƒ…å†µ
+	//åªéœ€è¦å…ˆä»Žmä¸ªè‹¹æžœä¸­æ‹¿å‡ºnä¸ªï¼Œæ”¾åˆ°nä¸ªç›˜å­ä¸­ï¼Œæ¯ä¸ªç›˜å­æ”¾ä¸€ä¸ªè‹¹æžœ,æ”¾æ³•æ•°ä½putapple(m-n,n)
+	//2>è‡³å°‘æœ‰ä¸€ä¸ªç›˜å­æ˜¯ç©ºç€çš„ï¼Œç„¶åŽæŠŠmä¸ªè‹¹æžœæ”¾åˆ°å‰©ä¸‹çš„n-1ä¸ªç›˜å­ä¸­ï¼Œæ”¾æ³•æ•°ä½putapple(m,n-1)
 	if(m>n)
 		return putapple(m,n-1)+putapple(m-n,n);
 }
@@ -32,8 +32,8 @@ int main()
 {
 	int t;
 	int i;
-	int m, n;//mÎªÆ»¹ûÊý£¬nÎªÅÌ×Ó¸öÊý
-	scanf("%d",&t);//¿ØÖÆÊäÈëÓÐ¶àÉÙÐÐ
+	int m, n;//mä¸ºè‹¹æžœæ•°ï¼Œnä¸ºç›˜å­ä¸ªæ•°
+	scanf("%d",&t);//æŽ§åˆ¶è¾“å…¥æœ‰å¤šå°‘è¡Œ
 	//printf("%d\n",t);
 	while(t--)
 	{

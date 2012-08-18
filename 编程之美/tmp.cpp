@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <ctime>
 #include <iterator>
 #include <functional>
@@ -15,7 +15,7 @@ struct Point
 		:x(m_x), y(m_y){}
 };
 /************************************************************************/
-/* º¯Êı¹¦ÄÜ£º°´µãµÄX×ø±êÅÅĞò                                            */
+/* å‡½æ•°åŠŸèƒ½ï¼šæŒ‰ç‚¹çš„Xåæ ‡æ’åº                                            */
 /************************************************************************/
 struct CmpX : public binary_function<bool, Point, Point>
 {
@@ -25,7 +25,7 @@ struct CmpX : public binary_function<bool, Point, Point>
 	}
 };
 /************************************************************************/
-/* º¯Êı¹¦ÄÜ£º°´µãµÄY×ø±êÅÅĞò                                            */
+/* å‡½æ•°åŠŸèƒ½ï¼šæŒ‰ç‚¹çš„Yåæ ‡æ’åº                                            */
 /************************************************************************/
 struct CmpY : public binary_function<bool, Point, Point>
 {
@@ -35,9 +35,9 @@ struct CmpY : public binary_function<bool, Point, Point>
 	}
 };
 /************************************************************************/
-/*  Àà¹¦ÄÜ£º²úÉúÎŞÖØ¸´µÄËæ»úÊı	
-Àà³ÉÔ±£ºnum    ±íÊ¾Òª²úÉúµÄËæ»úÊıµÄ¸öÊı
-bound  ±íÊ¾Ã¿¸öËæ»úÊıµÄ·¶Î§[0, bound-1).                    */
+/*  ç±»åŠŸèƒ½ï¼šäº§ç”Ÿæ— é‡å¤çš„éšæœºæ•°	
+ç±»æˆå‘˜ï¼šnum    è¡¨ç¤ºè¦äº§ç”Ÿçš„éšæœºæ•°çš„ä¸ªæ•°
+bound  è¡¨ç¤ºæ¯ä¸ªéšæœºæ•°çš„èŒƒå›´[0, bound-1).                    */
 /************************************************************************/
 class Random
 {
@@ -66,11 +66,11 @@ public:
 	}
 private:
 	int *arr;
-	int num;	//Ëæ»úÊıµÄ¸öÊı
-	int bound;  //Ëæ»úÊıµÄ·¶Î§
+	int num;	//éšæœºæ•°çš„ä¸ªæ•°
+	int bound;  //éšæœºæ•°çš„èŒƒå›´
 };
 /************************************************************************/
-/* º¯Êı¹¦ÄÜ£ºÇóÁ½µã¼äµÄ¾àÀë                                             */
+/* å‡½æ•°åŠŸèƒ½ï¼šæ±‚ä¸¤ç‚¹é—´çš„è·ç¦»                                             */
 /************************************************************************/
 inline double Distance(const Point& lhs, const Point& rhs)
 {
@@ -80,20 +80,20 @@ inline double Distance(const Point& lhs, const Point& rhs)
 	return sqrt(res);
 }
 /************************************************************************/
-/* º¯Êı¹¦ÄÜ£ºÇóÊı×éÖĞÁ½µã¼äµÄ×î¶Ì¾àÀë                                   */
+/* å‡½æ•°åŠŸèƒ½ï¼šæ±‚æ•°ç»„ä¸­ä¸¤ç‚¹é—´çš„æœ€çŸ­è·ç¦»                                   */
 /************************************************************************/
 double GetShortestDistace(Point arr[], int low, int high)
 {
 	double result = 0.;
 
-	if (high - low < 3) //Ğ¡ÓÚµÈÓÚ3¸öµãÊ±
+	if (high - low < 3) //å°äºç­‰äº3ä¸ªç‚¹æ—¶
 	{
-		if (high - low == 1) //2¸öµãÊ±
+		if (high - low == 1) //2ä¸ªç‚¹æ—¶
 		{
 			double distance = Distance(arr[low], arr[high]);
 			return distance;
 		}
-		else //3¸öµã
+		else //3ä¸ªç‚¹
 		{
 			double distance1 = Distance(arr[low], arr[low + 1]);
 			double distance2 = Distance(arr[low], arr[low + 2]);
@@ -102,22 +102,22 @@ double GetShortestDistace(Point arr[], int low, int high)
 		}
 	}
 	int middle = (low + high) / 2;
-	double left_distance = GetShortestDistace(arr, low, middle);		//Çómiddle×ó±ßµÄ×î¶Ì¾àÀë
-	double right_distance = GetShortestDistace(arr, middle + 1, high);	//ÇómiddleÓÒ±ßµÄ×î¶Ì¾àÀë
+	double left_distance = GetShortestDistace(arr, low, middle);		//æ±‚middleå·¦è¾¹çš„æœ€çŸ­è·ç¦»
+	double right_distance = GetShortestDistace(arr, middle + 1, high);	//æ±‚middleå³è¾¹çš„æœ€çŸ­è·ç¦»
 
-	double delta = min(left_distance, right_distance); //ÖĞ¼äÇøÓòµÄ½çÏŞ
+	double delta = min(left_distance, right_distance); //ä¸­é—´åŒºåŸŸçš„ç•Œé™
 	result = delta;
-	vector<Point> midArea;	//´æ·ÅÖĞ¼äÌõ´øÇøÓòµÄµã
+	vector<Point> midArea;	//å­˜æ”¾ä¸­é—´æ¡å¸¦åŒºåŸŸçš„ç‚¹
 	for (int k = low; k < high; k++)
 	{
 		if(arr[k].x > arr[middle].x - delta && arr[k].x < arr[middle].x + delta)
 			midArea.push_back(arr[k]);
 	}
-	sort(midArea.begin(), midArea.end(), CmpY()); //°´Y×ø±êÅÅĞò
+	sort(midArea.begin(), midArea.end(), CmpY()); //æŒ‰Yåæ ‡æ’åº
 	int size = midArea.size();
 	for (int i = 0; i < size; i++)
 	{
-		int k = (i + 7) > size ? size : (i+7);	//Ö»ÓĞÑ¡È¡³ö7¸öµã(Ö¤Ã÷¹ı³ÌÃ»¿´¶®)
+		int k = (i + 7) > size ? size : (i+7);	//åªæœ‰é€‰å–å‡º7ä¸ªç‚¹(è¯æ˜è¿‡ç¨‹æ²¡çœ‹æ‡‚)
 		for (int j = i+1; j < k; j++)
 		{
 			if(Distance(midArea.at(i), midArea.at(j)) < result)
@@ -127,7 +127,7 @@ double GetShortestDistace(Point arr[], int low, int high)
 	return result;
 }
 
-#define N 100 //µãµÄ¸öÊı
+#define N 100 //ç‚¹çš„ä¸ªæ•°
 int main()
 {
 	Point arr[N];

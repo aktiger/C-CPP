@@ -1,4 +1,4 @@
-/*
+ï»¿/*
 Description
 
 George took sticks of the same length and cut them randomly until all parts became at most 50 units long. Now he wants to return sticks to the original state, but he forgot how
@@ -49,9 +49,9 @@ Output:
 
 #include <stdio.h>
 
-int parts;//Ä¾¹÷±»ÇĞ¸î³ÉËéÆ¬µÄÊıÁ¿
-int ticks[65];//ticks[i]µÚi¸öËéÆ¬µÄ³¤¶È
-int visited[65];//±ê¼ÇÄ³¸öËéÆ¬ÊÇ·ñ±»Ê¹ÓÃµÄ±êÖ¾
+int parts;//æœ¨æ£è¢«åˆ‡å‰²æˆç¢ç‰‡çš„æ•°é‡
+int ticks[65];//ticks[i]ç¬¬iä¸ªç¢ç‰‡çš„é•¿åº¦
+int visited[65];//æ ‡è®°æŸä¸ªç¢ç‰‡æ˜¯å¦è¢«ä½¿ç”¨çš„æ ‡å¿—
 
 int cmp(const void *a, const void *b)
 {
@@ -90,16 +90,16 @@ int calculateoriginal(int len, int remains,int num)
 int main()
 {
 	int i,len;
-	int sum = 0;//¼ÇÂ¼Ä¾¹÷ËéÆ¬³¤¶È×ÜºÍ
-	int max = 0;//¼ÇÂ¼Ä¾¹÷ËéÆ¬µÄ×î´óÖµ
+	int sum = 0;//è®°å½•æœ¨æ£ç¢ç‰‡é•¿åº¦æ€»å’Œ
+	int max = 0;//è®°å½•æœ¨æ£ç¢ç‰‡çš„æœ€å¤§å€¼
 	while(1)
 	{
 		sum = 0;
 		max = 0;
-		scanf("%d",&parts);//ÊäÈëËéÆ¬×ÜÊı
+		scanf("%d",&parts);//è¾“å…¥ç¢ç‰‡æ€»æ•°
 		if(parts == 0)
 			break;
-		for(i=0; i<parts; i++)//¼ÇÂ¼Ã¿Ò»¿éËéÆ¬µÄ³¤¶È
+		for(i=0; i<parts; i++)//è®°å½•æ¯ä¸€å—ç¢ç‰‡çš„é•¿åº¦
 		{
 			scanf("%d",&ticks[i]);
 			sum += ticks[i];

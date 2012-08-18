@@ -1,10 +1,10 @@
-#include <iostream>
+ï»¿#include <iostream>
 using namespace std;
 
 /*
 *From the art of computer programming:vol 3:Sorting and Searching
-*Ê±¼ä£º2012Äê3ÔÂ6ÈÕ21:02:32
-*×÷Õß£ºÕÅ³¬
+*æ—¶é—´ï¼š2012å¹´3æœˆ6æ—¥21:02:32
+*ä½œè€…ï¼šå¼ è¶…
 *Email:uestczhangchao@gmail.com
 */
 
@@ -39,30 +39,30 @@ void Distribution_Counting(int array[], int arraylen)
 	memset(count,0,sizeof(int)*valuescope);
 	
 
-	//Í³¼ÆarrayÄÚµÄÊı×ÖÔÚminvalueºÍmaxvalue·¶Î§µÄ³öÏÖ´ÎÊı
+	//ç»Ÿè®¡arrayå†…çš„æ•°å­—åœ¨minvalueå’ŒmaxvalueèŒƒå›´çš„å‡ºç°æ¬¡æ•°
 	for (i=0; i<arraylen; i++)
 	{
 		count[array[i]-minvalue]++;
 	}
 
-	//Í³¼ÆminvalueºÍmaxvalue·¶Î§ÄÚ£¬²»Ğ¡ÓÚ¸Ã·¶Î§ÄÚÄ³¸öÊıµÄ³öÏÖÆµÊı
-	//count[i]¶ÔÓ¦Ğ¡ÓÚvalue+iµÄÊı³öÏÖµÄ´ÎÊı
+	//ç»Ÿè®¡minvalueå’ŒmaxvalueèŒƒå›´å†…ï¼Œä¸å°äºè¯¥èŒƒå›´å†…æŸä¸ªæ•°çš„å‡ºç°é¢‘æ•°
+	//count[i]å¯¹åº”å°äºvalue+içš„æ•°å‡ºç°çš„æ¬¡æ•°
 	for (i=1; i<valuescope; i++)
 	{
 		count[i] = count[i] + count[i-1];
 	}
 
-	//ÒÀ´ÎÊä³öÃ¿¸öÊı×Ö£¬Êä³öµÄË³ĞòÎªnon-descendingË³Ğò£¬²¢ÇÒ±£Ö¤ÊÇÓĞĞòµÄ
+	//ä¾æ¬¡è¾“å‡ºæ¯ä¸ªæ•°å­—ï¼Œè¾“å‡ºçš„é¡ºåºä¸ºnon-descendingé¡ºåºï¼Œå¹¶ä¸”ä¿è¯æ˜¯æœ‰åºçš„
 	for (j=arraylen-1;j>=0;j--)
 	{
-		////È¡³ö¸Ã¹Ø¼ü×Ö³öÏÖµÄ´ÎÊı
+		////å–å‡ºè¯¥å…³é”®å­—å‡ºç°çš„æ¬¡æ•°
 		i = count[array[j]-minvalue];
 		tmp[i-1] = array[j];
 		--count[array[j]-minvalue];
 
 	}
 
-	//½«½á¹û¿½±´µ½arrayÊı×éÖĞ
+	//å°†ç»“æœæ‹·è´åˆ°arrayæ•°ç»„ä¸­
 	for (i=0; i<arraylen; i++)
 	{
 		array[i] = tmp[i];
