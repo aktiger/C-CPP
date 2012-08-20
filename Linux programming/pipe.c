@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Usage:%s <string>\n",argv[0]);
 		exit(EXIT_FAILURE);
 	}
-	if(pipe(pipefd[2])==-1)
+	if(pipe(pipefd)==-1)
 	{
 		perror("pipe");
 		exit(EXIT_FAILURE);
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	else /*return from parent, write arg[1] to pipe*/
 	{
 		close(pipefd[0]);
-		write(pipefd[1],argv[1],1);
+		write(pipefd[1],argv[1],strlen(argv[1]));
 		close(pipefd[1]);
 		wait(NULL);
 		exit(EXIT_SUCCESS);
