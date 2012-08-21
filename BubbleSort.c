@@ -1,8 +1,8 @@
-/*
+ï»¿/*
 *Author:justinzhang
 *Email:uestczhangchao@gmail.com
-*Time:2011Äê5ÔÂ11ÈÕ16:17:52
-*Discription:Ã°ÅİÅÅĞòËã·¨
+*Time:2011å¹´5æœˆ11æ—¥16:17:52
+*Discription:å†’æ³¡æ’åºç®—æ³•
 */
 
 
@@ -40,7 +40,7 @@ void bubblesort(int A[],int len)
 
 int main()
 {
-	/*Êı×éÔªËØ´Ó0¿ªÊ¼´æ·Å*/
+	/*æ•°ç»„å…ƒç´ ä»0å¼€å§‹å­˜æ”¾*/
 	int A[] = {0,5,6,7,-3,555,88};
 	int i;
 	bubblesort(A,6);
