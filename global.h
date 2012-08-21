@@ -1,4 +1,4 @@
-#ifndef __Global_H__
+﻿#ifndef __Global_H__
 #define __Global_H__
 //#ifdef __cplusplus
 //#define extern "c"

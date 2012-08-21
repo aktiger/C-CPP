@@ -1,16 +1,16 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define item 1000
 
-/**sÖĞµÄs1Ìæ»»Îªs2**/
-//¼ÓÈëÁË±êÖ¾flagºó£¬¾Í¿ÉÒÔÌæ»»×Ö·û´®ÖĞµÚÒ»¸ö³öÏÖµÄ×Ó´®
+/**sä¸­çš„s1æ›¿æ¢ä¸ºs2**/
+//åŠ å…¥äº†æ ‡å¿—flagåï¼Œå°±å¯ä»¥æ›¿æ¢å­—ç¬¦ä¸²ä¸­ç¬¬ä¸€ä¸ªå‡ºç°çš„å­ä¸²
 
 char *strRepl(char *s, char *s1, char *s2)
 {
 char *p,*sp,*dp,*pos;
 int len,cnt;
-int flag = 0;//ÎªÁËÖ»Ìæ»»µÚÒ»¸öµ¥´Ê¶ø¼ÓÈëµÄÅĞ¶Ï±êÖ¾
+int flag = 0;//ä¸ºäº†åªæ›¿æ¢ç¬¬ä¸€ä¸ªå•è¯è€ŒåŠ å…¥çš„åˆ¤æ–­æ ‡å¿—
 for (pos=s;;) {
 	if(flag == 1)
 	{
