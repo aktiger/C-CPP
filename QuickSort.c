@@ -1,16 +1,16 @@
-/*
+ï»¿/*
 *Author:justinzhang
 *Email:uestczhangchao@gmail.com
-*Time:2011Äê5ÔÂ11ÈÕ15:58:40
-*Discription:Ëã·¨µ¼ÂÛµÚ7ÕÂ£¬¿ìËÙÅÅĞòËã·¨ÊµÏÖ
+*Time:2011å¹´5æœˆ11æ—¥15:58:40
+*Discription:ç®—æ³•å¯¼è®ºç¬¬7ç« ï¼Œå¿«é€Ÿæ’åºç®—æ³•å®ç°
 */
 
-#include "X:\±à³ÌÁ·Ï°\C-C++\global.h"
+#include "X:\ç¼–ç¨‹ç»ƒä¹ \C-C++\global.h"
 
 #if quick_sort==stdon
 
 #include <stdio.h>
-/*½»»»Á½¸öÊı*/
+/*äº¤æ¢ä¸¤ä¸ªæ•°*/
 void swap(int *x, int *y)
 {
 	int tmp = *x;
@@ -18,8 +18,8 @@ void swap(int *x, int *y)
 	*y= tmp;
 }
 
-/*ÒÔÊı×éµÄ×îÓÒ±ßÔªËØA[r]ÎªÖ÷Ôª¶ÔÊı×é½øĞĞ»®·Ö£¬·µ»Øpivot£¬pivot×ó±ßµÄÔªËØ¶¼±ÈA[r]Ğ¡£¬ÓÒ±ßµÄÔªËØ
-*¶¼±ÈA[r]´ó£»
+/*ä»¥æ•°ç»„çš„æœ€å³è¾¹å…ƒç´ A[r]ä¸ºä¸»å…ƒå¯¹æ•°ç»„è¿›è¡Œåˆ’åˆ†ï¼Œè¿”å›pivotï¼Œpivotå·¦è¾¹çš„å…ƒç´ éƒ½æ¯”A[r]å°ï¼Œå³è¾¹çš„å…ƒç´ 
+*éƒ½æ¯”A[r]å¤§ï¼›
 */
 int partition(int A[],int p, int r)
 {
@@ -39,7 +39,7 @@ int partition(int A[],int p, int r)
 	return i;
 }
 
-/*ÀûÓÃpartition²»¶ÏµÄ¶ÔÊı×é½øĞĞ»®·Ö£¬È»ºó·Ö±ğ¶Ô»®·ÖºóµÄÁ½¸ö²¿·Ö½øĞĞÅÅĞò(·ÖÖÎ·¨Ë¼Ïë)*/
+/*åˆ©ç”¨partitionä¸æ–­çš„å¯¹æ•°ç»„è¿›è¡Œåˆ’åˆ†ï¼Œç„¶ååˆ†åˆ«å¯¹åˆ’åˆ†åçš„ä¸¤ä¸ªéƒ¨åˆ†è¿›è¡Œæ’åº(åˆ†æ²»æ³•æ€æƒ³)*/
 void quicksort(int A[],int low, int high)
 {
 	int pivot;
@@ -54,7 +54,7 @@ void quicksort(int A[],int low, int high)
 
 int main()
 {
-	/*ÕâÀïÊı×éµÄÏÂ±ê´Ó0¿ªÊ¼*/
+	/*è¿™é‡Œæ•°ç»„çš„ä¸‹æ ‡ä»0å¼€å§‹*/
 	int A[]={55,5,4,6,7,8,444,4};
 	int i;
 	quicksort(A,0,7);
