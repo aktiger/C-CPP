@@ -65,7 +65,7 @@ main(int argc, char *argv[])
 	fprintf(stderr, "partial write");
 	exit(EXIT_FAILURE); 
     }
-    exit(EXIT_SUSSESS); 
+    exit(EXIT_SUCCESS); 
 }
 
 
