@@ -1,4 +1,12 @@
-﻿#include<errno.h>
+﻿/*
+author:justinzhang
+email:uestczhangchao@gmail.com
+time:2012-8-22 18:50:23:
+desc: a buggy program from bbs.qshpan.com, i use strerror(errno) to locate
+the problem, the problem is that i didn't give the second command line arguments.
+ After making it running properly, i add some exception handling code:)                
+*/
+#include<errno.h>
 #include<sys/mman.h> 
 #include<sys/types.h> 
 #include<fcntl.h> 
