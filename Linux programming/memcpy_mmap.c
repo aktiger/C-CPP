@@ -22,6 +22,11 @@ main(int argc,char** argv)
        exit(EXIT_FAILURE);
    }
    fd=open(argv[1],O_CREAT|O_RDWR|O_TRUNC,00777); 
+   if(fd == -1)
+   {
+   	printf("error:%s\n",strerror(errno));
+	exit(EXIT_FAILURE);
+   }
    lseek(fd,sizeof(people)*5-1,SEEK_SET); 
    write(fd,"",1); 
    p_map=(people*)mmap(NULL,sizeof(people)*10,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0); 
@@ -32,7 +37,6 @@ main(int argc,char** argv)
         temp += 1; 
 	printf("%s\n",strerror(errno));
         memcpy((*(p_map+i)).name,&temp,2); 
-	strerror(errno);
         (*(p_map+i)).age=20+i; 
    } 
     printf("initialize over!\n"); 
