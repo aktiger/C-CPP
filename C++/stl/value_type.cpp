@@ -17,7 +17,12 @@ struct MyIter
 	
 };
 template <class I>
-typename I::value_type
+struct iterator_traits
+{
+	typedef typename I::value_type;	
+};
+template <class I>
+typename iertator_traits<I>::value_type
 func(I ite)
 {
 	return *ite;
