@@ -19,7 +19,7 @@ struct MyIter
 template <class I>
 struct iterator_traits
 {
-	typedef typename I::value_type;	
+	typedef typename I::value_type value_type;	
 };
 template <class I>
 typename iertator_traits<I>::value_type
