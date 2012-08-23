@@ -25,14 +25,7 @@ func(I ite)
 
 int main()
 {
-Myiter<int> ite(new int(8));
+MyIter<int> ite(new int(8));
 cout << func(ite)<<endl;
 return 0;
-}
-
-
-
-
-
-
-
+} 
