@@ -3,6 +3,7 @@ author:justinzhang
 email:uestczhangchao@gmail.com
 time:2012-8-23 10:28:53
 desc: value_type , from <the annotated stl source>, chapter 3, p86
+iterator_traits will be coflict with system, so i use another name.
 */
 #include<iostream>
 using namespace std;
@@ -17,19 +18,19 @@ struct MyIter
 	
 };
 template <class I>
-struct iterator_traits
+struct iterator_traitss
 {
 	typedef typename I::value_type value_type;	
 };
 
 template <class T>
-struct iterator_traits<T*>
+struct iterator_traitss<T*>
 {
 	typedef T value_type;
 };
 
 template <class I>
-typename iterator_traits<I>::value_type
+typename iterator_traitss<I>::value_type
 func(I ite)
 {
 	return *ite;
