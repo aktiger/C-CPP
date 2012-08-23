@@ -27,6 +27,11 @@ func(I ite)
 {
 	return *ite;
 }
+template <class T>
+struct iterator_traits<T*>
+{
+	typedef T value_type;
+};
 
 int main()
 {
