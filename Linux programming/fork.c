@@ -6,6 +6,7 @@ desc：fork problem, from www.qshpan.com
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 int sum;
 int main()
 {
@@ -15,7 +16,7 @@ int main()
 	for(i=0; i<5; i++)
 	{
 		printf("%d\n",i);
-		fflush();
+		fflush(stdout);
 		sum += i;
 	}
 	printf("sum = %d\n", sum);
