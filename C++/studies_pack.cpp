@@ -4,7 +4,8 @@ email:uestczhangchao@gmail.com
 time:2012-8-30 16:58:38
 desc:for the practice of interview problem
 */
-
+#include <iostream>
+using namespace std;
 struct Foo
 {
 	Foo(){}
@@ -24,7 +25,14 @@ int main()
 	p1++;
 	//*p1 = 'w'; //error
 	//p2++;      // error
-	*p2 = 'h';
+	*p2 = 'h'; 
+
+	/*int x[4] = {0};
+	int y[4] = {1};
+
+	for(int i=0; i<4; i++)
+		cout << x[i] << " " << y[i] << endl;*/
+
 
 	return 0;
 }
