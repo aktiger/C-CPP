@@ -2,7 +2,7 @@
 author:justinzhang
 email:uestczhangchao@gmail.com
 time:2012-8-30 18:54:01
-desc: binary search from the aocp
+desc: binary search from the aocp p380
 */
 
 #include <iostream>
