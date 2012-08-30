@@ -25,13 +25,29 @@ int main()
 	p1++;
 	//*p1 = 'w'; //error
 	//p2++;      // error
-	*p2 = 'h'; 
+	//*p2 = 'h';  //error : can not write to const string
 
-	/*int x[4] = {0};
+	char str[][10] = {"hello","Google"};
+	char *pstr = str[0];
+	cout << strlen(pstr+10) << endl; 
+	/*
+
+	str[ ][10]由定义可知，str[0]="Hello"，str[1]="Google"，
+
+	内存中数据的存储为：
+
+	str[0]                                       str[1]
+
+	H e l l 0 '\0' '\0' '\0' '\0' '\0' '\0' G o o g l e '\0' '\0' '\0' '\0'
+
+	所以p+10刚好为‘G’的地址，所以strlen(p+10)=6
+	*/
+
+	int x[4] = {0};
 	int y[4] = {1};
 
 	for(int i=0; i<4; i++)
-		cout << x[i] << " " << y[i] << endl;*/
+		cout << x[i] << " " << y[i] << endl;
 
 
 	return 0;
