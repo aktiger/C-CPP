@@ -29,5 +29,7 @@ int main()
 	char *dest = new char[strlen(str)+1]; // here it add 1 to stlen(str), cause we need a '\0'
 	assert(dest);// whenever use a pointer, first to test if it is NULL; after use it up, assign NULL to it;
 	cout << strcpy(dest,str) << endl;
+	delete []dest;
+	dest = NULL;
 	return 0;
 }
