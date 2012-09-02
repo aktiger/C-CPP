@@ -1,4 +1,14 @@
-﻿#include <sys/wait.h>
+﻿/*
+@@
+	Author:	JustinZhang
+	Email:	uestczhangchao@gmail.com
+	Time:	2012-9-1 23:32:22
+	desc:	Example from man, write by hand, test under ubuntu gcc.
+			For the purpose of reviewing pipe.
+@@
+*/
+
+#include <sys/wait.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
