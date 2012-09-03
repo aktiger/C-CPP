@@ -13,7 +13,7 @@ Desc:	get all subset of a set, i used to solve this problem, when i was still a 
 #include <algorithm>
 using namespace std;
 
-template<typename type> list<list<type>> get_subset(const list<type>& set)
+template<typename type> list<list<type>> get_subset(list<type>& set)
 {
 	list<list<type>> subsets;
 	list<type> asubset;
@@ -26,13 +26,14 @@ template<typename type> list<list<type>> get_subset(const list<type>& set)
 	{
 		it = set.begin();
 		int k = i;
+		asubset.erase(asubset.begin(),asubset.end());
 		while (k)
 		{
 			if (k & 1)
 			{
 				asubset.push_back(*it);
 			}
-			it += 1;
+			it++;
 			k = k >> 1;
 		}
 		subsets.push_back(asubset);
@@ -53,10 +54,15 @@ int main()
 	list<int> set;
 	set.assign(data, data + sizeof(data)/sizeof(int));
 	
-	show_list(set);
+	//show_list(set);
 
 	list<list<int>> subsets = get_subset(set);
-	for(unsigned int i)
+	int count = 0;
+	for(list<list<int>>::iterator it = subsets.begin();it != subsets.end(); it++)
+	{
+		show_list(*it);
+		cout << "------"<< ++count << "---------" << endl;
+	}
 
 	return 0;
 }
