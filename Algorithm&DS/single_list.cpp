@@ -22,6 +22,7 @@ public:
 	void show_list(list<type> *lhead);
 	list<type>* combine_list(list<type> *l1, list<type>* l2);
 	bool list_intersect(list<type> *l1, list<type> *l2);
+	list<type>* list_reverse(list<type> *head);
 	type random(type begin, type end);
 	type get_data()
 	{
@@ -44,6 +45,27 @@ private:
 	list<type> *next;
 };
 
+/* added at 2012-9-4 14:46:14 */
+template<typename type> list<type>* list<type>::list_reverse(list<type> *head)
+{
+	if(head == NULL || head->next == NULL)
+		return NULL;
+	list<type>* p1 = head->next;
+	list<type>*	p2 = p1->next;
+	p1->next = NULL;// we should set the next field of first element to NULL; 
+	list<type>* p3 = NULL;
+	while(p2 != NULL)
+	{
+		p3 = p2->next;
+		p2->next = p1;
+		p1 = p2;
+		p2 = p3;
+	}
+	head->next = p1;
+	return head;
+
+}
+
 template<typename type> type list<type>::random(type begin, type end)
 {
 	return (begin + (end - begin)*rand()/(RAND_MAX+1));
@@ -63,6 +85,7 @@ template<typename type> void list<type>::show_list(list<type> *l)
 template <typename type> list<type>* list<type> :: create_list()
 {
 	type tmp_data;
+	list<type> *node = NULL;
 	list<type> *phead = new list<type>();
 	phead->next = NULL;
 	list<type> *real_head = phead;
@@ -76,14 +99,15 @@ template <typename type> list<type>* list<type> :: create_list()
 			break;
 		else
 		{
-			list<type> *node = new list<type>();
+			node = new list<type>();
 			node->data = tmp_data;
-			node->next = NULL; // do not forge this line, it's very important!
 			phead->next = node;
 			phead = node;
 		}
-
+		
 	}
+	if(node!=NULL)
+		node->next = NULL; // do not forge this line, it's very important!
 	return real_head;
 }
 
@@ -199,6 +223,15 @@ int main()
 		cout << "p1 and p2 have no common element" << endl;
 	}
 
-
+	/*-------------test list_reverse----------------------- */
+	cout << "test list_reverse" << endl;
+	list<int> l5 ;
+	list<int>* p5 = l5.create_list();
+	cout << "before list reverse" << endl;
+	l5.show_list(p5);
+	cout << "after list_reverse" << endl;
+	l5.show_list(l5.list_reverse(p5));
+	
+	
 	return 0;
 }
