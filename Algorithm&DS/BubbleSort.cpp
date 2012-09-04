@@ -2,20 +2,21 @@
 *Author:justinzhang
 *Email:uestczhangchao@gmail.com
 *Time:2011年5月11日16:17:52
-*Discription:冒泡排序算法
+*Discription:冒泡排序算法, change to cpp and add template @2012-9-4 22:08:26
 */
 
 
-#include<stdio.h>
+#include <iostream>
+using namespace std;
 
-void swap(int *x, int *y)
+template<typename T> void b_swap(T& x, T& y)
 {
-	int tmp = *x;
-	*x = *y;
-	*y = tmp;
+	T tmp = x;
+	x = y;
+	y = tmp;
 }
 
-void bubblesort(int A[],int len)
+template<typename T> void bubblesort(T A[],int len)
 {
 	int i,j;
 	int flag = 0;
@@ -26,7 +27,7 @@ void bubblesort(int A[],int len)
 		{
 			if(A[j]>A[j+1])
 			{
-				swap(&A[j],&A[j+1]);
+				b_swap<T>(A[j],A[j+1]);
 				flag = 1;
 			}
 		}
@@ -43,9 +44,9 @@ int main()
 	/*数组元素从0开始存放*/
 	int A[] = {0,5,6,7,-3,555,88};
 	int i;
-	bubblesort(A,6);
+	bubblesort<int>(A,6);
 	for(i=1; i<=6;i++)
 		printf("%d\n",A[i]);
-	system("pause");
+
 	return 0;
 }
