@@ -7,6 +7,8 @@ desc: all the list related operation will be place here;
 	  including:
 	  1> combine_list(list<type> *l1, list<type>* l2);
 	  2> list_intersect(list<type> *l1, list<type> *l2)
+	  3> list_reverse
+	  4> combine_sorted_list
 @@
 */
 
@@ -23,6 +25,8 @@ public:
 	list<type>* combine_list(list<type> *l1, list<type>* l2);
 	bool list_intersect(list<type> *l1, list<type> *l2);
 	list<type>* list_reverse(list<type> *head);
+	// combine two sorted list into one sorted list
+	list<type>*	combine_sorted_list(list<type> * head1, list<type> *head2);
 	type random(type begin, type end);
 	type get_data()
 	{
@@ -45,11 +49,61 @@ private:
 	list<type> *next;
 };
 
+/*added at 2012-9-6 23:28:24*/
+template<typename type> list<type>* list<type>::combine_sorted_list(list<type>* head1, list<type>* head2)
+{
+	if(head1 == NULL || head1->next==NULL)
+		return head2;
+	if(head2 == NULL || head2->next == NULL)
+		return head1;
+
+	list<type>* p1 = head1->next;
+	list<type>* p2 = head2->next;
+	list<type>* p3 = head1;
+	head1->set_next(NULL);//set the head of list1 to NULL
+	delete head2;
+	list<type>* node = NULL;
+	while(p1 && p2)
+	{
+		//insert the element of p2 in front of p1
+		if(p1->get_data() < p2->get_data())
+		{
+			node = p1;
+			p1 = p1->get_next();
+		}
+		// insert element of p2 behind element of p1
+		else
+		{
+			node = p2;
+			p2 = p2->get_next();
+		}
+		p3->set_next(node);
+		p3 = node;
+		node->set_next(NULL);
+
+	}//end of while
+
+	if(p1==NULL)
+	{
+		p1 = p2;
+	}
+	while(p1)
+	{
+		node = p1;
+		p1 = p1->get_next();
+		p3->set_next(node);
+		p3 = node;
+		node->set_next(NULL);
+	}
+	return head1;
+}
+
+
 /* added at 2012-9-4 14:46:14 */
 template<typename type> list<type>* list<type>::list_reverse(list<type> *head)
 {
 	if(head == NULL || head->next == NULL)
-		return NULL;
+		return head;
 	list<type>* p1 = head->next;
 	list<type>*	p2 = p1->next;
 	p1->next = NULL;// we should set the next field of first element to NULL; 
@@ -145,6 +199,8 @@ template <typename type> bool list<type>::list_intersect(list<type>*l1, list<typ
 
 int main()
 {
+	/*-------------test create_list() and show_list()---------------*/
+	cout << " test create_list() and show_list()" << endl;
 	list<double> l1;
 	list<double>* p1=l1.create_list();
 	//l1.show_list(p1);
@@ -154,6 +210,7 @@ int main()
 	//l2.show_list(p2);
 
 	/* test combine_list(p1,p2) */
+	cout << "test combine_list(p1, p2)" << endl;
 	list<double>*p1_p2 = l2.combine_list(p1,p2);
 	l2.show_list(p1_p2);
 
@@ -232,6 +289,14 @@ int main()
 	cout << "after list_reverse" << endl;
 	l5.show_list(l5.list_reverse(p5));
 	
+	/*----------------test combine two sorted list------------*/
+	cout << "test two sorted list" << endl;
+	list<int> l6;
+	list<int>* p6 = l6.create_list();
+	list<int> l7;
+	list<int>* p7 = l7.create_list();
+	p6 = l6.combine_sorted_list(p6, p7);
+	l5.show_list(p6);
 	
 	return 0;
 }
