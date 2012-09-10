@@ -37,8 +37,8 @@ template <typename type> void find_solution(type t, type n)
 
 int main()
 {
-	int T = 20;
-	int N = 20;
+	int T = 5;
+	int N = 5;
 
 	find_solution<int>(T,N);
 	cout << "there are "<< count << " combinations" << endl;
