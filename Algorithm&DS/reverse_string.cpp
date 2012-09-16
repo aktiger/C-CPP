@@ -26,9 +26,32 @@ string Reverse(string str)
 	return tmp;
 }
 
+void reverse_string(char *s)
+{
+	if(s==NULL)
+		return ;
+	char tmp;
+	char *end = s;
+	while(*end)
+	{
+		++end;
+	}
+	--end;
+	while(s < end)
+	{
+		tmp = *s;
+		*s++ = *end;
+		*end-- = tmp;
+	}
+}
+
 int main()
 {
-	string str("yesterday!");
+	string str("abcd");
+	char s[] = "1234";
+	s[4] = '\0';
+	reverse_string(s);
+	cout << s << endl;
 	string t = Reverse(str);
 	cout << t << endl;
 	return 0;
