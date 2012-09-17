@@ -42,7 +42,7 @@ class Point
 
  /**
 	The following is the use of friend function;
-	In class Y, friend_x1 can not be defined with class Y, because at this
+	In class Y, friend_x1 can not be defined within class Y, because at this
 	time, the full defination of class X is still unknown;
  **/
 class X;
