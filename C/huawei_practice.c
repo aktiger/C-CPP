@@ -152,8 +152,9 @@ int main()
 	char strreplace[]="www";
 	strReplace(strsrc ,strreplace ,strfind);
 	printf("%s\n",strsrc);
-	
-	JOSEPHUS(9,5,1);
+	//JOSEPHUS(9,5,1);
+
+	putchar(97);
 	return 0;
 }
 
