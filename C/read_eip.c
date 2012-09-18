@@ -1,3 +1,11 @@
+/**
+Author:	justinzhang
+Email:	uestczhangchao@gmail.com
+Time:	2012-9-18 22:12:20
+Desc:	This file is used to learn gcc inline assembly code, and the trick to read
+	eip and cs register.
+
+**/
 #include <stdio.h>
 
 int main()
