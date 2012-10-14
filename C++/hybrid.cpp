@@ -41,5 +41,11 @@ int main()
 	delete p;
 
 	AA a;
+
+	cout << endl;
+	double test;
+	cin >> test;
+	cout << test;
+
 	return 0;
 }
