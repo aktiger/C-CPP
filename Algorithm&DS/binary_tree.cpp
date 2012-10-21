@@ -8,8 +8,10 @@ rev: 2012-10-21 11:27:26
     	Added:
 	 1. layered_order;
 	 2. predored_nonrecursive
-	 3. inodre_nonrecursive
+	 3. inoder_nonrecursive
 	 4. postorder_nonrecursive
+	 5. rebuild_pre_in
+	 6. rebuild_post_in
 */
 #include <iostream>
 #include <deque>
@@ -64,7 +66,7 @@ btree<double>* create_btr()
 	}
 }
 
-void preorder(btree<double> *r)
+template<class T> void preorder(btree<T> *r)
 {
 	if(r==NULL)
 		return;
@@ -205,35 +207,61 @@ template<class T> void postorder_nonrecursive(btree<T> *r)
 }
 
 /*----To reconstruct a binary tree from the inorder and preorder;2012-10-21 16:48:54-----*/
-template<class T> void rebuild_pre_in(T preorder[], size_t i, size_t j, T inorder[], size_t k, size_t h, btree<T> **root)
+template<class T> void rebuild_pre_in(T preorder[], size_t lp, size_t rp, T middle[], size_t lm, size_t rm , btree<T> **root)
 {
 	/*
 	if the size of preorder and inorder is not equal,or the size of order is zero,
 	there must be errors, so returns
 	*/
-	if((j-i) != (h-k) || (j-i+1)==0)
+	if((rp-lp) != (rm-lm) || (rp-lp+1)==0)
 		return;
-	size_t m = k;
-	while(preorder[i] != inorder[m])
+	
+	*root = new btree<T>();
+	(*root)->data = preorder[lp];
+	
+	size_t m = lm;
+	while(preorder[lp] != middle[m])
 	{
 		m++;
 	}
-	*root = new btree<T>();
-	(*root)->data = preorder[i];
 
-	if(m==k)
+	if(m==lm)
 		(*root)->lchild = NULL;
 	else 
-		rebuild_pre_in(preorder,i+1,i+m-k,inorder,k,m-1,&(*root)->lchild);
-	if(m == h)
+		rebuild_pre_in(preorder, lp+1, lp+m-lm, middle, lm, m-1, &(*root)->lchild);
+	if(m == rm)
 		(*root)->rchild = NULL;
 	else
-		rebuild_pre_in(preorder,i+m-k+1,j,inorder,m+1,h,&(*root)->rchild);
+		rebuild_pre_in(preorder, lp+m-lm+1, rp, middle, m+1, rm, &(*root)->rchild);
 }
 
-template<class T> void rebulid_post_in(T postorder[], size_t i, size_t j, T inorder[], size_t k, size_t h, btree<T> **root)
+/*
+	To construct binary tree from postorder and inorder; 2012-10-21 20:25:23
+	To get the right boundary, you can get a small binary tree and generalize it;
+*/
+template<class T> void rebulid_post_in(T post[], size_t lp, size_t rp, T middle[], size_t lm, size_t rm, btree<T> **root)
 {
+	if((rp-lp)!=(rm-lm) || (rp-lp+1)==0)
+		return;
+	(*root)= new btree<T>();
+	(*root)->data = post[rp];
+	(*root)->lchild = NULL;
+	(*root)->rchild = NULL;
 
+	size_t m = lm;
+	while(post[rp] != middle[m])
+	{
+		m++;
+	}
+	size_t len = m - lm;
+	if(m==lm)
+		(*root)->lchild = NULL;
+	else
+		rebulid_post_in(post, lp, lp+len-1, middle, lm, m-1, &(*root)->lchild);
+	if(m==rm)
+		(*root)->rchild = NULL;
+	else
+		rebulid_post_in(post, lp+len, rp-1, middle, m+1, rm, &(*root)->rchild);
 }
 
 int main()
@@ -266,13 +294,25 @@ int main()
 	cout << "postorder_nonrecursive:" << endl;
 	postorder_nonrecursive<double>(root);
 
+	/*
+	pay attention that if you give the rebuild function the wrong tranverse sequence ,
+	the program will in erro..., so your preorder and inorder must from the same tree,
+	you should not cheat the program.
+	*/
 	cout << "reconstruct binary tree from preorder and inorder!" << endl;
 	char pre[] = "abcdefghi";
 	char inorder[] = "bcaedghfi";
-	char post[] = "cbhgifeda";
+	char post[] = "cbehgifda";
+
 	btree<char> * recovery_tree = NULL;
-	rebuild_pre_in(pre,0,8,inorder,0,8,&recovery_tree);
+	btree<char> * recovery_tree2 = NULL;
+	rebuild_pre_in<char> (pre, 0, strlen(pre)-1, inorder, 0, strlen(inorder)-1, &recovery_tree);
 	postorder_nonrecursive<char>(recovery_tree);
+
+	cout <<"reconstruct binary tree from postorder and inorder!" << endl;
+	rebulid_post_in<char> (post, 0, strlen(post)-1, inorder, 0, strlen(inorder)-1, &recovery_tree2);
+	postorder_nonrecursive<char>(recovery_tree2);
+	preorder<char>(recovery_tree2);
 
 	return 0;
 }
