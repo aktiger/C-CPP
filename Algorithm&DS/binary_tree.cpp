@@ -3,8 +3,15 @@ author:justinzhang
 email:uestczhangchao@gmail.com
 time:2012-8-20 15:52:27
 des.:using non recursive method to traverse binary tree
+
+rev: 2012-10-21 11:27:26 
+    	Added:
+	 1. layered_order;
+	 2. predored_nonrecursive
 */
 #include <iostream>
+#include <deque>
+#include <stack>
 using namespace std;
 
 template<typename T> class btree
@@ -81,15 +88,76 @@ void postorder(btree<double> *r)
 	cout << r->data<<endl;
 }
 
+template<class T> void layered_order(btree<T> *r)
+{
+	if(NULL==r)
+	{
+		return;
+	}
+	btree<T>* node = NULL;
+	deque<btree<T>* > Q;
+	Q.push_back(r);
+	while(!Q.empty())
+	{
+		node = Q.front();
+		cout << node->data << endl;
+		if(node->lchild != NULL)
+			Q.push_back(node->lchild);
+		if(node->rchild != NULL)
+			Q.push_back(node->rchild);
+		Q.pop_front();
+	}
+}
+
+template<class T> void preorder_nonrecursive(btree<T> *r)
+{
+	if(NULL == r)
+		return ;
+	btree<T>* node = r;
+	deque<btree<T> *> stack;
+	cout << node->data << endl;
+	stack.push_back(node);
+	while(!stack.empty())
+	{
+		while(node->lchild != NULL)
+		{
+			cout << node->lchild->data << endl;
+			stack.push_back(node->lchild);
+			node = node->lchild;
+		}
+		node = stack.back();
+		stack.pop_back();
+		if(node->rchild != NULL)
+		{
+			stack.push_back(node->rchild);
+			node = node->rchild;
+			cout << node->data << endl;
+		}
+		
+	}
+}
+
 
 int main()
 {
 	btree<double> *root = NULL;
 	create_btr(&root);
 	//btree<double> *T = create_btr();
+	cout << "preoredr:" << endl;
 	preorder(root);
+	cout << "inorder:" << endl;
 	inorder(root);
+	cout << "postorder:"<< endl;
 	postorder(root);
 	//inorder(T);
+
+	cout << "layered order:" << endl;
+	layered_order<double>(root);
+
+
+	cout << "preorder_nonrecursive:" << endl;
+	preorder_nonrecursive<double>(root);
+
+
 	return 0;
 }
