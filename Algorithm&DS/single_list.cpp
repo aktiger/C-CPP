@@ -1,4 +1,4 @@
-﻿/*
+/*
 @@
 author:justinzhang
 email:uestczhangchao@gmail.com
@@ -297,6 +297,6 @@ int main()
 	list<int>* p7 = l7.create_list();
 	p6 = l6.combine_sorted_list(p6, p7);
 	l5.show_list(p6);
-	
+	system("pause");
 	return 0;
 }
