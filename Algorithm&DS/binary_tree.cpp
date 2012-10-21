@@ -68,7 +68,7 @@ void preorder(btree<double> *r)
 {
 	if(r==NULL)
 		return;
-	cout << r->data << endl;
+	cout << r->data << " ";
 	preorder(r->lchild);
 	preorder(r->rchild);
 }
@@ -78,7 +78,7 @@ void inorder(btree<double> *r)
 	if(NULL==r)
 		return;
 	inorder(r->lchild);
-	cout << r->data<<endl;
+	cout << r->data<< " ";
 	inorder(r->rchild);
 }
 void postorder(btree<double> *r)
@@ -87,7 +87,7 @@ void postorder(btree<double> *r)
 		return ;
 	postorder(r->lchild);
 	postorder(r->rchild);
-	cout << r->data<<endl;
+	cout << r->data<<" ";
 }
 
 template<class T> void layered_order(btree<T> *r)
@@ -102,13 +102,14 @@ template<class T> void layered_order(btree<T> *r)
 	while(!Q.empty())
 	{
 		node = Q.front();
-		cout << node->data << endl;
+		cout << node->data << " ";
 		if(node->lchild != NULL)
 			Q.push_back(node->lchild);
 		if(node->rchild != NULL)
 			Q.push_back(node->rchild);
 		Q.pop_front();
 	}
+	cout << endl;
 }
 
 template<class T> void preorder_nonrecursive(btree<T> *r)
@@ -117,26 +118,20 @@ template<class T> void preorder_nonrecursive(btree<T> *r)
 		return ;
 	btree<T>* node = r;
 	deque<btree<T> *> stack;
-	cout << node->data << endl;
-	stack.push_back(node);
-	while(!stack.empty())
+
+	while(!stack.empty() || node!=NULL)
 	{
-		while(node && node->lchild)
+		while(node)
 		{
-			cout << node->lchild->data << endl;
-			stack.push_back(node->lchild);
+			cout << node->data << " ";
+			stack.push_back(node);
 			node = node->lchild;
 		}
 		node = stack.back();
 		stack.pop_back();
-		if(node && node->rchild)
-		{
-			stack.push_back(node->rchild);
-			node = node->rchild;
-			cout << node->data << endl;
-		}
-		
+		node = node->rchild;
 	}
+	cout << endl;
 }
 
 
@@ -148,24 +143,19 @@ template<class T> void inodre_nonrecursive(btree<T> * root)
 	btree<T> * node = NULL;
 	deque<btree<T> *> stack;
 	node = root;
-	stack.push_back(node);
-	while(!stack.empty())
+	while(!stack.empty() || node!=NULL)
 	{
-		while(node && node->lchild)
+		while(node)
 		{
-			stack.push_back(node->lchild);
+			stack.push_back(node);
 			node = node->lchild;
 		}
 		node = stack.back();
 		stack.pop_back();
-		cout << node->data << endl;
-
-		if(node && node->rchild)
-		{
-			stack.push_back(node->rchild);
-			node = node->rchild;
-		}
+		cout << node->data <<" ";
+		node = node->rchild;
 	}
+	cout << endl;
 
 }
 
@@ -207,14 +197,15 @@ template<class T> void postorder_nonrecursive(btree<T> *r)
 		}
 		else
 		{
-			cout << node->data << endl;
+			cout << node->data <<" ";
 			node = NULL;
 		}
 	}
+	cout << endl;
 }
 
 /*----To reconstruct a binary tree from the inorder and preorder;2012-10-21 16:48:54-----*/
-template<class T> void rebuild(T preorder[], size_t i, size_t j, T inorder[], size_t k, size_t h, btree<T> **root)
+template<class T> void rebuild_pre_in(T preorder[], size_t i, size_t j, T inorder[], size_t k, size_t h, btree<T> **root)
 {
 	/*
 	if the size of preorder and inorder is not equal,or the size of order is zero,
@@ -233,25 +224,33 @@ template<class T> void rebuild(T preorder[], size_t i, size_t j, T inorder[], si
 	if(m==k)
 		(*root)->lchild = NULL;
 	else 
-		rebuild(preorder,i+1,i+m-k,inorder,k,m-1,&(*root)->lchild);
+		rebuild_pre_in(preorder,i+1,i+m-k,inorder,k,m-1,&(*root)->lchild);
 	if(m == h)
 		(*root)->rchild = NULL;
 	else
-		rebuild(preorder,i+m-k+1,j,inorder,m+1,h,&(*root)->rchild);
+		rebuild_pre_in(preorder,i+m-k+1,j,inorder,m+1,h,&(*root)->rchild);
 }
 
+template<class T> void rebulid_post_in(T postorder[], size_t i, size_t j, T inorder[], size_t k, size_t h, btree<T> **root)
+{
+
+}
 
 int main()
 {
+	/*
+	test binary tree:1 2 4 8 -1 -1 9 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
+					you can see the binary tree from layered_order easily~~
+	*/
 	btree<double> *root = NULL;
 	create_btr(&root);
 	//btree<double> *T = create_btr();
 	cout << "preoredr:" << endl;
-	preorder(root);
+	preorder(root); cout << endl;
 	cout << "inorder:" << endl;
-	inorder(root);
+	inorder(root);	cout << endl;
 	cout << "postorder:"<< endl;
-	postorder(root);
+	postorder(root); cout << endl;
 	//inorder(T);
 
 	cout << "layered order:" << endl;
@@ -270,8 +269,9 @@ int main()
 	cout << "reconstruct binary tree from preorder and inorder!" << endl;
 	char pre[] = "abcdefghi";
 	char inorder[] = "bcaedghfi";
+	char post[] = "cbhgifeda";
 	btree<char> * recovery_tree = NULL;
-	rebuild(pre,0,8,inorder,0,8,&recovery_tree);
+	rebuild_pre_in(pre,0,8,inorder,0,8,&recovery_tree);
 	postorder_nonrecursive<char>(recovery_tree);
 
 	return 0;
