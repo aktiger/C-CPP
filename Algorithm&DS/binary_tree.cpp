@@ -8,6 +8,8 @@ rev: 2012-10-21 11:27:26
     	Added:
 	 1. layered_order;
 	 2. predored_nonrecursive
+	 3. inodre_nonrecursive
+	 4. postorder_nonrecursive
 */
 #include <iostream>
 #include <deque>
@@ -119,7 +121,7 @@ template<class T> void preorder_nonrecursive(btree<T> *r)
 	stack.push_back(node);
 	while(!stack.empty())
 	{
-		while(node->lchild != NULL)
+		while(node && node->lchild)
 		{
 			cout << node->lchild->data << endl;
 			stack.push_back(node->lchild);
@@ -127,7 +129,7 @@ template<class T> void preorder_nonrecursive(btree<T> *r)
 		}
 		node = stack.back();
 		stack.pop_back();
-		if(node->rchild != NULL)
+		if(node && node->rchild)
 		{
 			stack.push_back(node->rchild);
 			node = node->rchild;
@@ -136,6 +138,82 @@ template<class T> void preorder_nonrecursive(btree<T> *r)
 		
 	}
 }
+
+
+template<class T> void inodre_nonrecursive(btree<T> * root)
+{
+	if(NULL == root)
+		return;
+	btree<T> * node = NULL;
+	deque<btree<T> *> stack;
+	node = root;
+	stack.push_back(node);
+	while(!stack.empty())
+	{
+		while(node && node->lchild)
+		{
+			stack.push_back(node->lchild);
+			node = node->lchild;
+		}
+		node = stack.back();
+		stack.pop_back();
+		cout << node->data << endl;
+
+		if(node && node->rchild)
+		{
+			stack.push_back(node->rchild);
+			node = node->rchild;
+		}
+	}
+
+}
+
+template<class T> void postorder_nonrecursive(btree<T> *r)
+{
+	if(r==NULL)
+		return ;
+	deque<btree<T> *> stack;
+	deque<int> stack_flag;
+	int flag = 0;
+	btree<T> * node = r;
+	stack.push_back(r);
+	stack_flag.push_back(1);
+
+	while(!stack.empty())
+	{
+		while(node && node->lchild)
+		{
+			stack.push_back(node->lchild);
+			stack_flag.push_back(1);
+			node = node->lchild;
+		}
+
+		node = stack.back();
+		flag = stack_flag.back();
+		stack.pop_back();
+		stack_flag.pop_back();
+
+		if(flag == 1)
+		{
+			stack.push_back(node);
+			stack_flag.push_back(2);
+			node = node->rchild;
+			if(node)
+			{
+				stack.push_back(node);
+				stack_flag.push_back(1);
+			}
+		}
+		else
+		{
+			cout << node->data << endl;
+			node = NULL;
+		}
+	}
+}
+
+
+
 
 
 int main()
@@ -158,6 +236,11 @@ int main()
 	cout << "preorder_nonrecursive:" << endl;
 	preorder_nonrecursive<double>(root);
 
+	cout << "inorder_nonrecursive:" << endl;
+	inodre_nonrecursive<double>(root);
+
+	cout << "postorder_nonrecursive:" << endl;
+	postorder_nonrecursive<double>(root);
 
 	return 0;
 }
