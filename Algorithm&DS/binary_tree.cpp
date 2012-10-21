@@ -140,6 +140,7 @@ template<class T> void preorder_nonrecursive(btree<T> *r)
 }
 
 
+
 template<class T> void inodre_nonrecursive(btree<T> * root)
 {
 	if(NULL == root)
@@ -212,8 +213,32 @@ template<class T> void postorder_nonrecursive(btree<T> *r)
 	}
 }
 
+/*----To reconstruct a binary tree from the inorder and preorder;2012-10-21 16:48:54-----*/
+template<class T> void rebuild(T preorder[], size_t i, size_t j, T inorder[], size_t k, size_t h, btree<T> **root)
+{
+	/*
+	if the size of preorder and inorder is not equal,or the size of order is zero,
+	there must be errors, so returns
+	*/
+	if((j-i) != (h-k) || (j-i+1)==0)
+		return;
+	size_t m = k;
+	while(preorder[i] != inorder[m])
+	{
+		m++;
+	}
+	*root = new btree<T>();
+	(*root)->data = preorder[i];
 
-
+	if(m==k)
+		(*root)->lchild = NULL;
+	else 
+		rebuild(preorder,i+1,i+m-k,inorder,k,m-1,&(*root)->lchild);
+	if(m == h)
+		(*root)->rchild = NULL;
+	else
+		rebuild(preorder,i+m-k+1,j,inorder,m+1,h,&(*root)->rchild);
+}
 
 
 int main()
@@ -241,6 +266,13 @@ int main()
 
 	cout << "postorder_nonrecursive:" << endl;
 	postorder_nonrecursive<double>(root);
+
+	cout << "reconstruct binary tree from preorder and inorder!" << endl;
+	char pre[] = "abcdefghi";
+	char inorder[] = "bcaedghfi";
+	btree<char> * recovery_tree = NULL;
+	rebuild(pre,0,8,inorder,0,8,&recovery_tree);
+	postorder_nonrecursive<char>(recovery_tree);
 
 	return 0;
 }
