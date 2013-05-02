@@ -1,7 +1,6 @@
-﻿#include "X:\编程练习\C-C++\global.h"
+﻿#include <stdio.h>
 
-#if volatile_test==stdon
- int myfun(int n)
+int myfun(int n)
 {
 	n=n+2;
 
@@ -19,6 +18,3 @@ void main()
 	printf("i=%d\n",myfun(4));
 }
 
-
-
-#endif

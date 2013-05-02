@@ -13,9 +13,9 @@
 */
 
 
-#include "X:\编程练习\C-C++\global.h"
+//#include "X:\编程练习\C-C++\global.h"
 
-#if va_arg==stdon
+//#if va_arg==stdon
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -30,10 +30,10 @@ int sum(int number,...)
 	char *pc;
 	char c='a';
 	pc = &c;
-	printf("pc=%d\n",pc);
-	printf("pc+1=%d\n",pc+1);
-	printf("p=%d\n",p);
-	printf("p+1=%d\n",p+1);
+	printf("pc=%p\n",pc);
+	printf("pc+1=%p\n",pc+1);
+	printf("p=%p\n",p);
+	printf("p+1=%p\n",p+1);
 	va_start(vaptr,number);
 	for(i=0; i<number;i++)
 	{
@@ -47,8 +47,8 @@ int sum(int number,...)
 int main()
 {
 	printf("%d\n",sum(4,4,3,2,1));
-	system("pause");
+	//	system("pause");
 	return 0;
 }
 
-#endif
+//#endif

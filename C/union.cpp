@@ -1,8 +1,6 @@
 ﻿#include <iostream>
+#include <stdio.h>
 using namespace std;
-
-
-
 union uu
 {
   short int a;
@@ -22,9 +20,8 @@ int main()
     u.b[0]=0x0a;
     u.b[1]=0x01;
 
-    
-   printf("%d\n",u.a);
-    
-    system("pause");
+    printf("%d\n",u.a);
+    printf("%x\n",u.a);
+    //    system("pause");
     return 0;
 }
