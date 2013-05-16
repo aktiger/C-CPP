@@ -7,6 +7,8 @@ Time: 2013-5-16 10:58 @F4-B265
 #include <stdio.h>
 #include <dirent.h>
 #include <stdlib.h>
+#include <iostream>
+#include <string.h>
 
 #define FATAL(fmt,...) fprintf(stderr, "[Fatal Error][%s]:[%d]"fmt"\n", __FILE__, __LINE__, ##__VA_ARGS__); abort()
 #define RT_NOTICE(fmt,...) fprintf(stderr,"[NOTICE][%s:%d]"fmt"\n",__FILE__,__LINE__,##__VA_ARGS__)
@@ -16,9 +18,12 @@ Time: 2013-5-16 10:58 @F4-B265
 
 int main()
 {
+  std::string path = "/home/zhangchao08/testdir";
   DIR			*dir = NULL;
   struct dirent *	 fileitem;
-  dir			     = opendir("/home/zhangchao08/testdir");
+
+  printf("path = %s\n", path.c_str());
+  dir			     = opendir(path.c_str());
   if(!dir)
   {
     FATAL("open dir fail");
@@ -26,7 +31,24 @@ int main()
 
   while(fileitem = readdir(dir))
   {
-    printf("%s\n", fileitem->d_name);
+    if(!fileitem)
+    {
+      RT_FATAL("Error readfile ");
+    }
+    char *	name	  = fileitem->d_name;
+    char	line[7];
+    printf("%s\n", name);
+    if(strcmp(name, ".") != 0 && strcmp(name,"..")!=0)
+    {
+      printf("file name = %s\n", (path+'/'+name).c_str());
+    FILE	*f = fopen((path+'/'+name).c_str(), "r");
+    if(f)
+    {
+      printf("file is not null \n");
+      fgets(line, 6 , f);
+      printf("line = %s\n", line);
+    }
+    }
   }
   return 0;
 }
