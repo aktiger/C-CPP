@@ -42,13 +42,16 @@ int main()
     {
       printf("file name = %s\n", (path+'/'+name).c_str());
     FILE	*f = fopen((path+'/'+name).c_str(), "r");
-    if(f)
+    if(!f)
     {
+      continue;
+    }
       printf("file is not null \n");
       fgets(line, 6 , f);
       printf("line = %s\n", line);
-    }
+      fclose(f);
     }
   }
+  closedir(dir);
   return 0;
 }
