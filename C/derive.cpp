@@ -25,7 +25,7 @@ class TestB: public TestA
              func1();
       }
       
-        void func1()
+       void func1()
       {
               cout << "B in func1" << endl;
       };
@@ -43,6 +43,5 @@ int main()
     pa = &b;
     pa->func1();
     pa->func2();
-    system("pause");
     return 0;
 }
