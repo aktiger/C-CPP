@@ -41,11 +41,11 @@ int main()
     if(strcmp(name, ".") != 0 && strcmp(name,"..")!=0)
     {
       printf("file name = %s\n", (path+'/'+name).c_str());
-    FILE	*f = fopen((path+'/'+name).c_str(), "r");
-    if(!f)
-    {
-      continue;
-    }
+      FILE	*f = fopen((path+'/'+name).c_str(), "r");
+      if(!f)
+      {
+	continue;
+      }
       printf("file is not null \n");
       fgets(line, 6 , f);
       printf("line = %s\n", line);
