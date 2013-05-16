@@ -25,5 +25,6 @@ int main()
   {
     std::cout << *it << std::endl;
   }
+  delete [] cstr;
   return 0;
 }
