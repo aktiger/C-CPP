@@ -18,11 +18,42 @@ This command is wrong: g++ -lboost_regex boost_hello.cpp -o boost_hello
 int main() {
   // 3 digits, a word, any character, 2 digits or "N/A", 
   // a space, then the first word again
-   boost::regex reg("\\d{3}([a-zA-Z]+).(\\d{2}|N/A)\\s\\1");
+  boost::regex reg("\\d{3}([a-zA-Z]+).(\\d{2}|N/A)\\s\\1");
   
-  std::string correct="123Hello N/A Hello";
-  std::string incorrect="123Hello 12 hello";
+  std::string	correct			    = "123Hello N/A Hello";
+  std::string	incorrect		    = "123Hello 12 hello";
+  assert(boost::regex_match(correct,reg)   == true);
+  assert(boost::regex_match(incorrect,reg) == false);
+
+  boost::cmatch matched_string;
+  boost::regex	rule("abcd");
+  std::string	input("abcd");
+
   
-  assert(boost::regex_match(correct,reg)==true);
-  assert(boost::regex_match(incorrect,reg)==false);
+  int	rt = boost::regex_match(input.c_str(), matched_string,  rule);
+  for(size_t i = 0 ; i < matched_string.size(); i++)
+  {
+    std::cout << "matched_string " << i << " is :" << matched_string[i].str() << std::endl;
+  }
+  std::cout << "rt = " << rt << std::endl;
+
+  boost::regex	expression("^select ([a-zA-Z]*) from ([a-zA-Z]*)");
+  boost::cmatch what;
+  std::string	in;
+  std::cout << "enter test string" << std::endl;
+  /*
+  getline(std::cin, in);
+  if(regex_match(in.c_str(), what, expression))
+    {
+      for (size_t i = 0; i < what.size(); i++)
+      {
+	std::cout << "str: " << what[i].str() << std::endl;
+      }
+    }
+    else
+    {
+      std::cout << "Error input" << std::endl;
+    }
+  */
+    return 0;
 }

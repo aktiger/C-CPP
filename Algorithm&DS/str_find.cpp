@@ -23,6 +23,23 @@ output:fastfood
 #include <iostream>
 #include <cstring>
 using namespace std;
+size_t find_next_not_of_star(char * rule, size_t rule_index)
+{
+  size_t	rule_len = strlen(rule);
+  while(rule_index != rule_len)
+  {
+    if(rule[rule_index] == '*')
+    {
+      continue;
+    }
+    else
+    {
+      return rule_index;
+    }
+  }
+  return rule_index;
+}
+
 
 char* my_find(char  input[],   char rule[])
 {
@@ -31,28 +48,45 @@ char* my_find(char  input[],   char rule[])
   {
     return NULL;
   }
-  unsigned int len = strlen(input);
-  unsigned int output_index = 0;
-  cout << "len = " << len << endl;
-  
-  char	*output	= new char[2*len];
-  if(output == NULL)
+  size_t	rule_len	   = strlen(rule);
+  size_t	input_len	   = strlen(input);
+  size_t	first_input_index  = 0;
+  size_t	second_input_index = 0;
+  size_t	rule_index  = 0;
+  while(second_input_index != input_len)
   {
-    return NULL;
-  }
-  
-  while(rule != NULL && input != NULL)
-  {
-    if(*rule != '*' && *rule != '?')
+    while(rule_index != rule_len )
     {
-      if(*rule == *input)
+      if((rule[rule_index] == '?') || (rule[rule_index] == input[second_input_index]))
       {
-	rule++;
-	input++;
-	output[output_index++] = *rule;
+	rule_index++;
+	second_input_index++;
+      }
+      else if(rule[rule_index]=='*')
+      {
+	rule_index = find_next_not_of_star(rule, rule_index);
+	if(rule_index == rule_len) // this means that, the following charactors are all stars
+	{
+	  return input;
+	}
+	else
+	{
+	  if((rule[rule_index] == '?') || (rule[rule_index] == inpunt[second_input_index]))
+	  {
+	    rule_index++;
+	    second_input_index++;
+	  }
+	  else
+	  {
+	    
+	  }
+	}
       }
     }
+    
+
   }
+  
 }
 
 //start 提示：自动阅卷起始唯一标识，请勿删除或增加。
@@ -61,6 +95,7 @@ int main()
     //write your code here
   char *input = "abcd";
   char *rule = "abcd";
+
   my_find(input, rule);
   return 0;
 }
