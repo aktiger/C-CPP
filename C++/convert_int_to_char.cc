@@ -29,9 +29,11 @@ int main()
   std::string  str;
 
   ss >> str; // get content from ss, put it is var str; Here ss act as input string stream
+
+  std::cout << "--------------------:" << ss.str() << std::endl;
   std::cout << "typeid str.c_str(): " << typeid(str.c_str()).name() << std::endl;
   p = const_cast<char*>(str.c_str());
-
+  
   std::string	plus;
   plus = str + " Hello string stream I love you" ;
 
