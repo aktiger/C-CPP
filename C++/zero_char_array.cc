@@ -20,12 +20,17 @@ struct xx
 };
 char data_send_to_hi[10]={'0','0','0','0','0','0','0','0','0','0'};
 
+
 int main(int argc, char *argv[])
 {
+  char char_array[] = {'a','b','c','d'};
 
+  std::cout << typeid(char_array).name() << std::endl;
   std::cout << sizeof(int) << std::endl;
   std::cout << sizeof(xx) << std::endl;
+
   im_ts_cs_req_t	*im_data = (im_ts_cs_req_t*)malloc(sizeof (*im_data) + sizeof(data_send_to_hi));
+  std::cout << typeid(im_data->szdata).name() << std::endl;
 
   strncpy(im_data->szdata,data_send_to_hi,sizeof(data_send_to_hi));
 
