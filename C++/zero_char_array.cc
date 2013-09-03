@@ -14,12 +14,19 @@ typedef struct im_ts_cs_req_t
   char		szdata[];
 } im_ts_cs_req_t __attribute__((packed));
 
+struct xx
+{
+  int	y[];
+};
 char data_send_to_hi[10]={'0','0','0','0','0','0','0','0','0','0'};
 
-int main()
+int main(int argc, char *argv[])
 {
-  
+
+  std::cout << sizeof(int) << std::endl;
+  std::cout << sizeof(xx) << std::endl;
   im_ts_cs_req_t	*im_data = (im_ts_cs_req_t*)malloc(sizeof (*im_data) + sizeof(data_send_to_hi));
+
   strncpy(im_data->szdata,data_send_to_hi,sizeof(data_send_to_hi));
 
   std::cout << im_data->szdata << std::endl;
