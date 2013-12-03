@@ -10,6 +10,7 @@
 
 int find_prv_city(std::vector<std::string> &data, std::string code)
 {
+  
   size_t	i1  = 0, i2=0, i3=0, i4=0;
   size_t	i   = 0;
   int		ret = 0;

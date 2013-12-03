@@ -2,10 +2,16 @@
 
 int main()
 {
+
 int	 i  = 0xffffffff;
 int a[]	    = {1,2,3,4};
 int	 xx = 0xfffffffe;
 int	*p  = a+1;
+
+unsigned int	 data = 0x19490738;
+unsigned char	*str  = (unsigned char *)&data;
+ fprintf(stderr, "%x\n", *str);
+ 
 printf("a-1 = %p\n", a-1);
 printf("a = %p\n",a);
 printf("a+1 = %p\n",a+1);

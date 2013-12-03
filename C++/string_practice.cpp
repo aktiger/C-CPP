@@ -19,6 +19,8 @@ int main()
   if(s1 == "&33333&&9922"){
     std::cout << "string equal const char " << std::endl;
   }
+
+  std::cout << "substr size 0 " << s1.substr(0,0) << std::endl;
   
   pos1 = s1.find_first_not_of('&');
   if(pos1 != std::string::npos){

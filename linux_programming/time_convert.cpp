@@ -33,7 +33,7 @@ int convert_time(const std::string &input_time_src)
 
 int main()
 {
-  const char * src = "12/Sep/2013:00:00:00 +0800";
+  std::string src = "26/Sep/2013:00:00:00 +0800";
   convert_time(src);
   return 0;
 }
