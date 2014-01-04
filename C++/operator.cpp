@@ -59,8 +59,8 @@ class mem_func_class {
   void  print(T element) {
           std::cout << element << " " << std::endl;
         }
-  void visit(){
-    std::for_each(data.begin(), data.end(), std::bind1st(std::mem_fun(&mem_func_class<T>::print), this));
+  // void visit(){
+  //   std::for_each(data.begin(), data.end(), std::bind1st(std::mem_fun(&mem_func_class<T>::print), this));
   }
 
   mem_func_class() {
@@ -97,10 +97,10 @@ int main()
 {
    std::cout << no_template::data.size() << " size " << std::endl;
    std::cout << mem_func_class<int>::data.size() << " size " << std::endl;
-    std::for_each(mem_func_class<int>::data.begin(), mem_func_class<int>::data.end(), myprint<int>());
+   //   std::for_each(mem_func_class<int>::data.begin(), mem_func_class<int>::data.end(), myprint<int>());
 
     //    mem_func_class<int> obj_mem_fun_ref;// = mem_func_class<int>();
-  std::cout << mem_func_class<int>::data.size() << " size " << std::endl;
+   std::cout << mem_func_class<int>::data.size() << " size " << std::endl;
     __gnu_cxx::hash_map<int, int> var;
     
     plus_<int>	plusobj;
