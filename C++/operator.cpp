@@ -61,7 +61,7 @@ class mem_func_class {
         }
   // void visit(){
   //   std::for_each(data.begin(), data.end(), std::bind1st(std::mem_fun(&mem_func_class<T>::print), this));
-  }
+  //}
 
   mem_func_class() {
     std::cout << "in constructor:" << std::endl;
@@ -129,7 +129,7 @@ int main()
     std::cout << std::endl;
     std::cout << "ret=" << ret << std::endl;
 
-    obj_mem_fun_ref.visit();
+    //obj_mem_fun_ref.visit();
 
 
     return 0;
