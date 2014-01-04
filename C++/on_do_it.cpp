@@ -35,16 +35,10 @@ class B:public A<B>
 
 int main()
 {
-	B b;
-	b.ondoit();
-	A<B> a;
-	a.doint();
-	
-	return 0;
+   B b;
+   b.ondoit();
+   A<B> a;
+   a.doint();
+   return 0;
 }
-
-
-
-
-
 

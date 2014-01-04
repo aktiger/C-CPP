@@ -46,6 +46,7 @@ void f()
       "mov %%rbp,%%rsp;"
       "pop %%rbp;"
       "push %0;"
+      "mov    $0x0,%%eax;"
       "ret"
       :			/* no output registers */
       : "r" (&g)
@@ -56,6 +57,16 @@ void f()
 
 int main (int argc, char *argv[])
 {
-  f();
+  //f();
+  asm (
+       "mov %%rbp, %%rsp;"
+       "pop %%rbp;"
+       "push %0;"
+       "mov    $0x0,%%eax;"
+       "ret"
+       :
+       :"r" (&g)
+       :"%rbp", "%rsp"
+);
   return 0;
 }
