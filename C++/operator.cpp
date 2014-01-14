@@ -55,7 +55,7 @@ template <class T>
 class mem_func_class {
   public:
   static std::vector<T> data;
-
+  static std::vector<int> data_int;
   void  print(T element) {
           std::cout << element << " " << std::endl;
         }
@@ -68,6 +68,9 @@ class mem_func_class {
     data.push_back(9991);
     data.push_back(2999);
     data.push_back(4449);
+
+    data_int.push_back(1);
+    data_int.push_back(3);
   }
   
   ~mem_func_class(){
@@ -79,11 +82,15 @@ class mem_func_class {
 template <class T>
 std::vector<T> mem_func_class<T>::data;
 
+template <typename T>
+std::vector<int> mem_func_class<T>::data_int;
+
 
 
 class no_template {
  public:
   static std::vector<int> data;
+
   no_template() {
     data.push_back(23);
     data.push_back(33);
@@ -99,8 +106,12 @@ mem_func_class<int> obj_mem_fun_ref;// = mem_func_class<int>();
 
 int main()
 {
+   std::cout << "class temp size " << sizeof (mem_func_class<int>) << std::endl;
+   std::cout << "no temp size " << sizeof (no_template) << std::endl;
    std::cout << no_template::data.size() << " size " << std::endl;
    std::cout << (mem_func_class<int>::data).size() << " size " << std::endl;
+   std::cout << (mem_func_class<int>::data_int).size() << " size " << std::endl;
+   
    //   std::for_each(mem_func_class<int>::data.begin(), mem_func_class<int>::data.end(), myprint<int>());
 
   //    mem_func_class<int> obj_mem_fun_ref;// = mem_func_class<int>();
