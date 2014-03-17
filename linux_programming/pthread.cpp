@@ -43,7 +43,7 @@ int main() {
 
   pthread_detach(pid1);
   pthread_detach(pid2);
-
+  std::cout << static_cast<intmax_t>(3) << std::endl;
   sleep(5);
   pthread_mutex_lock(&mutex_is_tag);
   std::cout << "is_tag is " << is_tag << std::endl;

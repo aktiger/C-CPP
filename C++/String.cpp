@@ -1,4 +1,4 @@
-﻿/*
+/*
 Author:	Justinzhang
 Email:	uestczhangchao@gmail.com
 Time:	2012-9-3 12:56:55
@@ -9,6 +9,7 @@ Desc:	for the purpose of reviewing copy constructor and assian operator, const e
 
 #include <iostream>
 #include <cassert>
+
 using namespace std;
 
 class String
@@ -19,9 +20,30 @@ class String
 		String & operator =(const String &other);
 		~String(void);
 		friend ostream & operator <<(ostream &scout, const String &str);
-	private:
+                friend String operator+(const String &lstr,  const String &rstr);
+
+                char * getpointer() const {
+                    return m_data;
+                }
+  	private:
 		char *m_data;
 };
+
+String operator+(const String &lstr, const String &rstr) {
+  int llen = strlen(lstr.getpointer());
+  int rlen = strlen(rstr.getpointer());
+  String str;
+  char *newchar = new char[llen + rlen + 1];
+  if(newchar) {
+    strcpy(newchar, lstr.getpointer());
+    strcat(newchar, rstr.getpointer());
+    str = newchar;
+    return str;
+  } else {
+    return NULL;
+  }
+}
+
 
 String::String(const char *str)
 {
@@ -71,8 +93,12 @@ int main()
 	cout<< s1 << endl;
 	String s2(s1);
 	cout << s2 << endl;
-	String s3 = s1;
+
+	String s3 = "world!";
 	cout << s3 << endl;
+        String s4;
+        cout << operator+(s1 , s2 );
+        cout << s4 << endl;
 	return 0;
 }
 
