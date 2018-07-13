@@ -6,8 +6,14 @@
      1. make CFuncEntry.so 
      2. make py 
      After build, you will get CFuncEntry.so in the root dir.
+
      You can run python-db call_cpp.py, to run the code.
      Use gdb --args python-dbg call_cpp.py , you can go into debug mode
      and set breakpoints in testlib.cpp code.
+
+Example output|
+:-------------------------:|
+:![](https://github.com/aktiger/YoloOCLInference/blob/master/frame_000006.jpg)|
+
 
 
