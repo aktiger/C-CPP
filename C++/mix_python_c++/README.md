@@ -13,7 +13,7 @@
 
 Example output|
 :-------------------------:|
-:![](https://github.com/aktiger/YoloOCLInference/blob/master/frame_000006.jpg)|
+:![](https://github.com/aktiger/C-CPP/blob/master/C%2B%2B/mix_python_c%2B%2B/gdb-screenshot.png)|
 
 
 
